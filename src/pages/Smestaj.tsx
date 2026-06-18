@@ -6,7 +6,7 @@ import Mapa from "../components/Mapa"
 import { useSmestaji, type SmestajFilters } from '../hooks/useSmestaji'
 import { useSmestajReservation } from '../hooks/useReservation'
 import CompanyFilter from '../components/CompanyFilter'
-import SmestajReservationModal from '../components/SmestajReservationModal'  // Removed .tsx extension
+import SmestajReservationModal from '../components/SmestajReservationModal'
 
 interface Props { activeSeason: Season }
 
@@ -139,16 +139,36 @@ export default function Smestaj({ activeSeason }: Props) {
         <div className={`block_smestaj_inner ${activeSeason}`}>
           <h1>PRONAĐITE IDEALAN SMEŠTAJ</h1>
           <p>Najbolji hoteli i apartmani na Kopaoniku</p>
-          
         </div>
         <div className="gradient" />
       </div>
 
       <div className={`grid_smestaj ${activeSeason}`}>
         <div className="sidebar">
-        
-
-       
+          {/* --- NEW DATE SELECTION SECTION --- */}
+          <div className="sidebar-section">
+            <div className="sidebar-section-title">Datum boravka</div>
+            <div className="date-inputs">
+              <div className="date-input">
+                <label>Dolazak</label>
+                <input
+                  type="date"
+                  value={checkIn}
+                  onChange={(e) => setCheckIn(e.target.value)}
+                  min={new Date().toISOString().split('T')[0]}
+                />
+              </div>
+              <div className="date-input">
+                <label>Odlazak</label>
+                <input
+                  type="date"
+                  value={checkOut}
+                  onChange={(e) => setCheckOut(e.target.value)}
+                  min={checkIn || new Date().toISOString().split('T')[0]}
+                />
+              </div>
+            </div>
+          </div>
 
           <div className="sidebar-section">
             <div className="sidebar-section-title">Tip Smestaja</div>
