@@ -244,25 +244,7 @@ export default function Smestaj({ activeSeason }: Props) {
             filterType="smestaj"
           />
 
-          <div className="sidebar-section">
-            <div className="sidebar-section-title">Mapa Smestaja</div>
-            <div className="map-wrapper">
-              {openMap && (
-                <div className="map-modal">
-                  <span onClick={() => setOpenMap(false)} className="material-symbols-outlined close_map">close</span>
-                  <Mapa />
-                </div>
-              )}
-              <button onClick={() => setOpenMap(true)} className="map-expand">
-                <span className="material-symbols-outlined">open_in_full</span>
-              </button>
-              <Mapa />
-              <div className="map-overlay">
-                <span className="material-symbols-outlined">map</span>
-                MAPA SMESTAJA
-              </div>
-            </div>
-          </div>
+       
 
           <div className="sidebar-section">
             <div className="sidebar-section-title">Tip Smestaja</div>

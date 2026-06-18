@@ -1,8 +1,5 @@
 @import url('./root.css');
 
-/* ===================================================================
-   HERO SECTION
-   =================================================================== */
 
 .smestaj.summer,
 .smestaj.winter {
@@ -13,6 +10,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  padding: 0 ;
 }
 
 .smestaj.summer {
@@ -24,6 +22,7 @@
 }
 
 .block_smestaj_inner {
+  padding: 2em 3em  !important;
   width: 100%;
   height: 100%;
   display: flex;
@@ -31,15 +30,18 @@
   align-items: center;
   justify-content: center;
   gap: 0.3em;
-  padding: 0 1.5em;
+  padding: 0;
   text-align: center;
 }
 
 .block_smestaj_inner.summer {
+  width: 100%;
   background-color: var(--nav-background-summer);
 }
 
 .block_smestaj_inner.winter {
+  width: 100%;
+  
   background-color: var(--nav-background-winter);
 }
 
@@ -59,10 +61,6 @@
   opacity: 0.8;
 }
 
-/* ===================================================================
-   SEARCH BAR
-   =================================================================== */
-
 .search_bar {
   display: flex;
   align-items: center;
@@ -72,8 +70,7 @@
   border-radius: 60px;
   padding: 6px 6px 6px 24px;
   margin-top: 24px;
-  width: 100%;
-  max-width: 720px;
+  width: fit-content;
   position: relative;
   z-index: 200;
   flex-wrap: wrap;
@@ -84,7 +81,6 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  flex: 1;
   min-width: 120px;
   position: relative;
   padding: 4px 10px;
@@ -897,9 +893,14 @@
   }
   
   .block_smestaj_inner h1 {
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
   
+
+   
+  .block_smestaj_inner h1 {
+    font-size: 0.6em;
+  }
   .grid_smestaj {
     padding: 12px;
   }
@@ -937,11 +938,11 @@
   }
   
   .block_smestaj_inner h1 {
-    font-size: 1.1rem;
+    font-size: 1em;
   }
   
   .block_smestaj_inner p {
-    font-size: 0.85rem;
+    font-size: 0.7em;
   }
   
   .card-content {

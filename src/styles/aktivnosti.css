@@ -1114,7 +1114,6 @@
   transform: none;
 }
 
-/* ---------- Scrollbar polish ---------- */
 .modal-content::-webkit-scrollbar {
   width: 8px;
 }
@@ -1128,7 +1127,6 @@
   border-radius: 8px;
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 480px) {
   .modal-overlay {
     padding: 1em 0.6em;
