@@ -50,26 +50,26 @@ export default function Dogadjaji({ activeSeason }: Props) {
   try {
     const companyId = dogadjaj.company?.id ?? dogadjaj.company_id ?? null;
 
-    await apiReq.post('/rezervacije/reservations/', {
-      company: companyId,                                 
+    const payload = {
+      company: companyId,
       service_name: dogadjaj.naziv,
-      service_type: 'dogadjaj',                             
-      company_name: dogadjaj.company?.company_name || '',   
+      service_type: 'dogadjaj',
+      company_name: dogadjaj.company?.company_name || '',
       date_from: dogadjaj.datum_pocetka,
-      date_to: null,                                        
-      guests: 1,                                            
+      date_to: null,               
+      guests: 1,                    
       amount: dogadjaj.je_besplatan ? 0 : dogadjaj.cena,
       notes: '',
       source: 'InfoKOP',
       channel: 'infokop',
       status: 'pending',
-    });
+    };
 
+    await apiReq.post('/rezervacije/reservations/', payload);
     setSuccess(dogadjaj.id);
-  } catch (err) {
-    console.error('Reservation error:', err);
-    // You may want to show an error alert to the user
-    alert('Došlo je do greške pri rezervaciji. Pokušajte ponovo.');
+  } catch (err: any) {
+    console.error('Reserve error:', err);
+    alert('Greška pri rezervaciji: ' + (err.response?.data?.detail || err.message));
   } finally {
     setReserving(null);
   }

@@ -72,16 +72,7 @@ export default function SmestajReservationModal({
         e.preventDefault();
         
         if (!isLoggedIn()) {
-            navigate('/account/login', { 
-                state: { 
-                    from: '/api/smestaj',
-                    returnUrl: '/profile',
-                    reservationData: { 
-                        smestajId: smestaj.id,
-                        smestajName: smestaj.naziv 
-                    }
-                } 
-            });
+            navigate('/account/login', { state: { from: '/smestaj' } });
             return;
         }
         
@@ -89,31 +80,32 @@ export default function SmestajReservationModal({
         setError('');
         
         try {
-            const reservationData = {
-                smestaj: smestaj.id,
-                check_in: formData.check_in,
-                check_out: formData.check_out,
-                broj_odraslih: formData.broj_odraslih,
-                broj_dece: formData.broj_dece,
-                napomena: formData.napomena,
+            // -- Use the same pattern as the working ReservationModal --
+            const companyId = smestaj.company?.id ?? null;
+
+            const payload = {
+                company: companyId,                          // numeric ID or null
+                service_name: smestaj.naziv,
+                service_type: 'smestaj',                    // matches SOURCE_META key
+                company_name: smestaj.company?.company_name || '',
+                date_from: formData.check_in,
+                date_to: formData.check_out,
+                guests: formData.broj_odraslih + formData.broj_dece,
+                amount: totalPrice,                          // number
+                notes: formData.napomena,
+                source: 'InfoKOP',
+                channel: 'infokop',
+                status: 'pending',
             };
 
-            const response = await apiReq.post('/smestaj/reservations/create/', reservationData);
+            const response = await apiReq.post('/rezervacije/reservations/', payload);
             
             if (response.status === 200 || response.status === 201) {
                 onSuccess();
             }
         } catch (err: any) {
             console.error('Reservation error:', err);
-            
-            if (err.response?.status === 401) {
-                setError('Vaša sesija je istekla. Molimo vas da se ponovo prijavite.');
-                setTimeout(() => {
-                    navigate('/account/login');
-                }, 2000);
-            } else {
-                setError(err.response?.data?.message || err.response?.data?.detail || 'Došlo je do greške. Pokušajte ponovo.');
-            }
+            setError(err.response?.data?.detail || err.response?.data?.message || 'Došlo je do greške.');
         } finally {
             setLoading(false);
         }
