@@ -46,16 +46,25 @@ function formatFullDate(iso: string | null) {
   return `${parseInt(d)}. ${months[parseInt(m) - 1]} ${y}.`
 }
 
+// ---------- PAGINATION SETTINGS ----------
+const ITEMS_PER_PAGE = 10
+
 export default function UserReservations() {
   const navigate = useNavigate()
   const [reservations, setReservations] = useState<Reservation[]>([])
   const [loading, setLoading] = useState(true)
+
+  // Pagination state (client-side)
+  const [currentPage, setCurrentPage] = useState(1)
+
   const [showModal, setShowModal] = useState(false)
   const [selectedReservation, setSelectedReservation] = useState<Reservation | null>(null)
   const [showDetailModal, setShowDetailModal] = useState(false)
   const [cancelling, setCancelling] = useState(false)
   const [confirmingCancel, setConfirmingCancel] = useState(false)
- const fetchReservations = () => {
+
+  // ---------- FETCH (unchanged) ----------
+  const fetchReservations = () => {
     setLoading(true)
     apiReq.get('/rezervacije/reservations/')
       .then(res => {
@@ -80,49 +89,88 @@ export default function UserReservations() {
           return b.date_from.localeCompare(a.date_from)
         })
         setReservations(all)
+        setCurrentPage(1) // reset to first page on new data
       })
       .catch(err => {
         if (err.response?.status === 401) navigate('/account/login')
+        else console.error("Fetch error:", err)
       })
       .finally(() => setLoading(false))
   }
- 
- 
- 
+
   useEffect(() => {
     fetchReservations()
   }, [])
 
+  // ---------- PAGINATION HELPERS ----------
+  const totalPages = Math.ceil(reservations.length / ITEMS_PER_PAGE)
+  const indexOfLastItem = currentPage * ITEMS_PER_PAGE
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE
+  const currentItems = reservations.slice(indexOfFirstItem, indexOfLastItem)
+
+  const goToPage = (page: number) => {
+    if (page < 1 || page > totalPages) return
+    setCurrentPage(page)
+  }
+
+  const renderPageNumbers = () => {
+    const pages = []
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(
+        <button
+          key={i}
+          onClick={() => goToPage(i)}
+          style={{
+            minWidth: "32px",
+            height: "32px",
+            borderRadius: "6px",
+            border: i === currentPage ? "1px solid #76b817" : "1px solid rgba(255,255,255,0.1)",
+            background: i === currentPage ? "rgba(118, 184, 23, 0.2)" : "transparent",
+            color: i === currentPage ? "#76b817" : "rgba(255,255,255,0.5)",
+            fontWeight: i === currentPage ? 700 : 400,
+            cursor: "pointer",
+            fontSize: "14px",
+            fontFamily: "Jakarta Bold",
+            transition: "all 0.15s",
+          }}
+        >
+          {i}
+        </button>
+      )
+    }
+    return pages
+  }
+
+  // ---------- MODAL HANDLERS (unchanged) ----------
   const handleReservationClick = (reservation: Reservation) => {
     setSelectedReservation(reservation)
     setShowDetailModal(true)
   }
 
   const handleCancelReservation = async () => {
-  if (!selectedReservation) return
+    if (!selectedReservation) return
+    const reservationId = selectedReservation.id
+    const reservationSource = selectedReservation.source
 
-  const reservationId = selectedReservation.id
-  const reservationSource = selectedReservation.source
-
-  setCancelling(true)
-  setConfirmingCancel(false)
-  try {
-    await apiReq.patch(`/rezervacije/reservations/${reservationId}/update_status/`, {
-      status: 'cancelled'
-    })
-    setReservations(prev => prev.map(r =>
-      r.id === reservationId && r.source === reservationSource
-        ? { ...r, status: "cancelled" }
-        : r
-    ))
-    setSelectedReservation(prev => prev ? { ...prev, status: "cancelled" } : null)
-  } catch (error: any) {
-    console.error("Error cancelling reservation:", error)
-    alert(`Greška pri otkazivanju: ${error.response?.data?.error || error.message}`)
-  } finally {
-    setCancelling(false)
+    setCancelling(true)
+    setConfirmingCancel(false)
+    try {
+      await apiReq.patch(`/rezervacije/reservations/${reservationId}/update_status/`, {
+        status: 'cancelled'
+      })
+      setReservations(prev => prev.map(r =>
+        r.id === reservationId && r.source === reservationSource
+          ? { ...r, status: "cancelled" }
+          : r
+      ))
+      setSelectedReservation(prev => prev ? { ...prev, status: "cancelled" } : null)
+    } catch (error: any) {
+      console.error("Error cancelling reservation:", error)
+      alert(`Greška pri otkazivanju: ${error.response?.data?.error || error.message}`)
+    } finally {
+      setCancelling(false)
+    }
   }
-}
 
   const BOOKING_TYPES = [
     { key: "smestaj",    icon: "hotel",           label: "Smeštaj",    description: "Hoteli, apartmani, vile",              path: "/smestaj" },
@@ -131,6 +179,7 @@ export default function UserReservations() {
     { key: "ugostitelji",icon: "restaurant",       label: "Ugostitelji",description: "Restorani, kafici",                    path: "/ugostitelji" },
   ]
 
+  // ---------- RENDER ----------
   return (
     <>
       <div className="main_reservations">
@@ -156,7 +205,7 @@ export default function UserReservations() {
               </div>
             )}
 
-            {!loading && reservations.map(r => {
+            {!loading && currentItems.map(r => {
               const s = STATUS_META[r.status] ?? { label: r.status, color: "#888" }
               const src = SOURCE_META[r.source] ?? { icon: "calendar_today", label: r.source }
               return (
@@ -190,6 +239,58 @@ export default function UserReservations() {
               )
             })}
 
+            {/* ---------- PAGINATION CONTROLS ---------- */}
+            {!loading && totalPages > 1 && (
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "6px",
+                marginTop: "16px",
+                padding: "8px 0",
+                flexWrap: "wrap",
+              }}>
+                <button
+                  onClick={() => goToPage(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "6px",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "transparent",
+                    color: currentPage === 1 ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.6)",
+                    cursor: currentPage === 1 ? "not-allowed" : "pointer",
+                    fontSize: "14px",
+                    fontFamily: "Jakarta Reg",
+                    transition: "all 0.15s",
+                  }}
+                >
+                  ‹ Prethodna
+                </button>
+
+                {renderPageNumbers()}
+
+                <button
+                  onClick={() => goToPage(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "6px",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "transparent",
+                    color: currentPage === totalPages ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.6)",
+                    cursor: currentPage === totalPages ? "not-allowed" : "pointer",
+                    fontSize: "14px",
+                    fontFamily: "Jakarta Reg",
+                    transition: "all 0.15s",
+                  }}
+                >
+                  Sledeća ›
+                </button>
+              </div>
+            )}
+            {/* ---------------------------------------- */}
+
             {!loading && reservations.length > 0 && (
               <button
                 onClick={() => setShowModal(true)}
@@ -210,6 +311,7 @@ export default function UserReservations() {
         </div>
       </div>
 
+      {/* ---------- MODALS (completely unchanged) ---------- */}
       {showModal && (
         <div
           onClick={() => setShowModal(false)}
@@ -396,59 +498,59 @@ export default function UserReservations() {
             )}
 
             {selectedReservation.status !== "cancelled" && selectedReservation.status !== "completed" && (
-  <>
-    {!confirmingCancel ? (
-      <button
-        onClick={() => setConfirmingCancel(true)}
-        style={{
-          width: "100%", padding: "12px",
-          background: "rgba(239, 68, 68, 0.15)",
-          border: "1px solid rgba(239, 68, 68, 0.3)",
-          borderRadius: "12px", cursor: "pointer",
-          color: "#ef4444", fontSize: "14px", fontWeight: 600,
-          fontFamily: "Jakarta Bold", display: "flex",
-          alignItems: "center", justifyContent: "center", gap: "8px",
-        }}
-      >
-        <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>cancel</span>
-        Otkaži rezervaciju
-      </button>
-    ) : (
-      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-        <p style={{ textAlign: "center", color: "rgba(255,255,255,0.6)", fontSize: "14px", margin: 0 }}>
-          Da li ste sigurni?
-        </p>
-        <div style={{ display: "flex", gap: "8px" }}>
-          <button
-            onClick={() => setConfirmingCancel(false)}
-            style={{
-              flex: 1, padding: "10px",
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: "10px", cursor: "pointer",
-              color: "rgba(255,255,255,0.5)", fontSize: "14px",
-            }}
-          >
-            Ne
-          </button>
-          <button
-            onClick={handleCancelReservation}
-            disabled={cancelling}
-            style={{
-              flex: 1, padding: "10px",
-              background: "rgba(239, 68, 68, 0.2)",
-              border: "1px solid rgba(239, 68, 68, 0.4)",
-              borderRadius: "10px", cursor: cancelling ? "not-allowed" : "pointer",
-              color: "#ef4444", fontSize: "14px", fontWeight: 600,
-            }}
-          >
-            {cancelling ? "Otkazivanje..." : "Da, otkaži"}
-          </button>
-        </div>
-      </div>
-    )}
-  </>
-)}
+              <>
+                {!confirmingCancel ? (
+                  <button
+                    onClick={() => setConfirmingCancel(true)}
+                    style={{
+                      width: "100%", padding: "12px",
+                      background: "rgba(239, 68, 68, 0.15)",
+                      border: "1px solid rgba(239, 68, 68, 0.3)",
+                      borderRadius: "12px", cursor: "pointer",
+                      color: "#ef4444", fontSize: "14px", fontWeight: 600,
+                      fontFamily: "Jakarta Bold", display: "flex",
+                      alignItems: "center", justifyContent: "center", gap: "8px",
+                    }}
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>cancel</span>
+                    Otkaži rezervaciju
+                  </button>
+                ) : (
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    <p style={{ textAlign: "center", color: "rgba(255,255,255,0.6)", fontSize: "14px", margin: 0 }}>
+                      Da li ste sigurni?
+                    </p>
+                    <div style={{ display: "flex", gap: "8px" }}>
+                      <button
+                        onClick={() => setConfirmingCancel(false)}
+                        style={{
+                          flex: 1, padding: "10px",
+                          background: "rgba(255,255,255,0.07)",
+                          border: "1px solid rgba(255,255,255,0.1)",
+                          borderRadius: "10px", cursor: "pointer",
+                          color: "rgba(255,255,255,0.5)", fontSize: "14px",
+                        }}
+                      >
+                        Ne
+                      </button>
+                      <button
+                        onClick={handleCancelReservation}
+                        disabled={cancelling}
+                        style={{
+                          flex: 1, padding: "10px",
+                          background: "rgba(239, 68, 68, 0.2)",
+                          border: "1px solid rgba(239, 68, 68, 0.4)",
+                          borderRadius: "10px", cursor: cancelling ? "not-allowed" : "pointer",
+                          color: "#ef4444", fontSize: "14px", fontWeight: 600,
+                        }}
+                      >
+                        {cancelling ? "Otkazivanje..." : "Da, otkaži"}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
             {selectedReservation.status === "cancelled" && (
               <div style={{ width: "100%", padding: "12px", background: "rgba(255,255,255,0.05)", borderRadius: "12px", textAlign: "center", color: "rgba(255,255,255,0.3)", fontSize: "14px", fontFamily: "JakartaReg" }}>
                 <span className="material-symbols-outlined" style={{ fontSize: "18px", verticalAlign: "middle", marginRight: "6px" }}>check_circle</span>
