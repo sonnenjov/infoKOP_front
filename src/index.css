@@ -1,5 +1,72 @@
+/* ========== BASE & VARIABLES ========== */
+@import url("./styles/variables.css");        /* (empty, keep for future) */
+@import url("./styles/root.css");             /* global custom properties, resets */
+@import url("./styles/main.css");             /* base typography, body defaults */
 
+/* ========== LAYOUTS ========== */
+@import url("./styles/account-layout.css");
+@import url("./styles/admin-layout.css");
+@import url("./styles/partner-layout.css");
 
-body {
-  background-color: black;
-}
+/* ========== GLOBAL COMPONENTS ========== */
+@import url("./styles/nav.css");
+@import url("./styles/footer.css");
+@import url("./styles/lang-toggle.css");
+@import url("./styles/calendar.css");
+@import url("./styles/weather.css");           /* root weather (general) */
+@import url("./styles/loading.module.css");
+
+/* ========== AUTH & FORMS ========== */
+@import url("./styles/auth.css");
+@import url("./styles/log_reg.css");
+@import url("./styles/login_demo.css");
+@import url("./styles/check_email.css");
+@import url("./styles/user_reg.css");
+@import url("./styles/partner_reg.css");
+
+/* ========== PAGE‑SPECIFIC STYLES ========== */
+@import url("./styles/pocetna.css");
+@import url("./styles/vesti.css");
+@import url("./styles/vest_single.css");
+@import url("./styles/dogadjaji.css");
+@import url("./styles/smestaj.css");
+@import url("./styles/ugostitelji.css");
+@import url("./styles/okopaoniku.css");
+@import url("./styles/aktivnosti.css");
+@import url("./styles/usluge.css");
+@import url("./styles/company_filter.css");
+@import url("./styles/reporter/allnews.css");
+
+/* ========== ROLE‑SPECIFIC OVERRIDES ========== */
+/* Admin */
+@import url("./styles/admin/admin_approvals.css");
+@import url("./styles/admin/dashboard_admin.css");
+@import url("./styles/admin/partners_admin.css");
+@import url("./styles/admin/settings_admin.css");
+@import url("./styles/admin/users_admin.css");
+
+/* User */
+@import url("./styles/user/activities_user.css");
+@import url("./styles/user/dashboard_user.css");
+@import url("./styles/user/reservations_user.css");
+@import url("./styles/user/settings_user.css");
+@import url("./styles/user/skipass_user.css");
+@import url("./styles/user/weather.css");      /* overrides root weather if both loaded */
+
+/* Partner */
+@import url("./styles/partner/analytics_partner.css");
+@import url("./styles/partner/inventar_partner.css");
+@import url("./styles/partner/meni_partner.css");
+@import url("./styles/partner/reservations_partner.css");
+@import url("./styles/partner/settings_partner.css");
+@import url("./styles/partner/smestaj_partner.css");
+@import url("./styles/partner/usluge_partner.css");
+
+/* Reporter */
+@import url("./styles/reporter/categories_repoerter.css");
+@import url("./styles/reporter/dashboard_reporter.css");
+@import url("./styles/reporter/kategorije.css");
+@import url("./styles/reporter/newsedit_reporter.css");
+
+/* ========== CATCH‑ALL (if needed) ========== */
+@import url("./styles/reservation_card.css");  /* currently empty */
