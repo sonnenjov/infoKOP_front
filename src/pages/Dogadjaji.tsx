@@ -235,7 +235,7 @@ const companyId = typeof dogadjaj.company === 'object'
                   <div className="event-info">
                     <div className="event-meta">
                       {dogadjaj.kategorija && (
-                        <span className={`event-badge badge-${dogadjaj.kategorija}`}>
+                        <span className={`event-badge`}>
                           {dogadjaj.kategorija}
                         </span>
                       )}

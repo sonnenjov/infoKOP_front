@@ -225,7 +225,7 @@ export default function UserReservations() {
                   </div>
                   <div className="history_item_right">
                     <span className="history_amount">
-                      {r.amount ? `${Number(r.amount).toLocaleString("sr-RS")} RSD` : (r.guests ? `${r.guests} ${r.source === "dogadjaj" ? "karte" : "osoba"}` : "—")}
+                      {r.amount ? `${Number(r.amount).toLocaleString("sr-RS")} €` : (r.guests ? `${r.guests} ${r.source === "dogadjaj" ? "karte" : "osoba"}` : "—")}
                     </span>
                     <span className="history_badge" style={{ background: `${s.color}22`, color: s.color }}>
                       {s.label}
@@ -478,7 +478,7 @@ export default function UserReservations() {
               <div>
                 <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", fontFamily: "JetBrain Mono", textTransform: "uppercase", letterSpacing: "0.04em" }}>Iznos</div>
                 <div style={{ marginTop: "4px", fontSize: "14px", color: "white", fontFamily: "JakartaReg" }}>
-                  {selectedReservation.amount ? `${Number(selectedReservation.amount).toLocaleString("sr-RS")} RSD` : "—"}
+                  {selectedReservation.amount ? `${Number(selectedReservation.amount).toLocaleString("sr-RS")} €` : "—"}
                 </div>
               </div>
             </div>
