@@ -1,4 +1,4 @@
-import { act, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { apiReq } from "../../hooks/api"
 import { useNavigate } from "react-router-dom"
 import "../../styles/user/reservations_user.css"
@@ -53,65 +53,72 @@ export default function UserReservations() {
   const navigate = useNavigate()
   const [reservations, setReservations] = useState<Reservation[]>([])
   const [loading, setLoading] = useState(true)
-const [showCanceled, setShowCanceled] = useState(false)
+  const [showCanceled, setShowCanceled] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const visibleReservations = showCanceled
-  ? reservations
-  : reservations.filter(r => r.status !== 'cancelled')
-
   const [showModal, setShowModal] = useState(false)
   const [selectedReservation, setSelectedReservation] = useState<Reservation | null>(null)
   const [showDetailModal, setShowDetailModal] = useState(false)
   const [cancelling, setCancelling] = useState(false)
   const [confirmingCancel, setConfirmingCancel] = useState(false)
- 
+
+  // --- computed: visible list based on toggle ---
+  const visibleReservations = showCanceled
+    ? reservations
+    : reservations.filter(r => r.status !== 'cancelled')
+
+  // --- fetch ---
   const fetchReservations = () => {
-  setLoading(true)
-  apiReq.get('/rezervacije/reservations/')
-    .then(res => {
-      const data = res.data
-      const list: any[] = Array.isArray(data) ? data : data.results ?? []
-      const totalPages = Math.ceil(visibleReservations.length / ITEMS_PER_PAGE)
-const indexOfLastItem = currentPage * ITEMS_PER_PAGE
-const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE
-const currentItems = visibleReservations.slice(indexOfFirstItem, indexOfLastItem)
-      const all: Reservation[] = list.map(r => ({
-        id: r.id,
-        source: r.service_type ?? '',
-        service_name: r.service_name ?? '',
-        company_name: r.company_name ?? '',
-        date_from: r.date_from ?? null,
-        date_to: r.date_to ?? null,
-        status: r.status ?? 'pending',
-        amount: r.amount ?? null,
-        guests: r.guests ?? null,
-        notes: r.notes ?? '',
-        created_at: r.created_at ?? '',
-      }))
-      all.sort((a, b) => {
-        if (!a.created_at && !b.created_at) return 0
-        if (!a.created_at) return 1
-        if (!b.created_at) return -1
-        return b.created_at.localeCompare(a.created_at)
+    setLoading(true)
+    apiReq.get('/rezervacije/reservations/')
+      .then(res => {
+        const data = res.data
+        const list: any[] = Array.isArray(data) ? data : data.results ?? []
+        const all: Reservation[] = list.map(r => ({
+          id: r.id,
+          source: r.service_type ?? '',
+          service_name: r.service_name ?? '',
+          company_name: r.company_name ?? '',
+          date_from: r.date_from ?? null,
+          date_to: r.date_to ?? null,
+          status: r.status ?? 'pending',
+          amount: r.amount ?? null,
+          guests: r.guests ?? null,
+          notes: r.notes ?? '',
+          created_at: r.created_at ?? '',
+        }))
+        all.sort((a, b) => {
+          if (!a.created_at && !b.created_at) return 0
+          if (!a.created_at) return 1
+          if (!b.created_at) return -1
+          return b.created_at.localeCompare(a.created_at)
+        })
+        setReservations(all)
+        setCurrentPage(1)
       })
-      setReservations(all)
-      setCurrentPage(1)
-    })
-    .catch(err => {
-      if (err.response?.status === 401) navigate('/account/login')
-      else console.error("Fetch error:", err)
-    })
-    .finally(() => setLoading(false))
-}
+      .catch(err => {
+        if (err.response?.status === 401) navigate('/account/login')
+        else console.error("Fetch error:", err)
+      })
+      .finally(() => setLoading(false))
+  }
 
   useEffect(() => {
     fetchReservations()
   }, [])
 
-  const totalPages = Math.ceil(reservations.length / ITEMS_PER_PAGE)
+  // --- pagination using visibleReservations ---
+  const totalPages = Math.ceil(visibleReservations.length / ITEMS_PER_PAGE)
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE
-  const currentItems = reservations.slice(indexOfFirstItem, indexOfLastItem)
+  const currentItems = visibleReservations.slice(indexOfFirstItem, indexOfLastItem)
+
+  // reset page if toggle changes and current page becomes invalid
+  useEffect(() => {
+    const maxPage = Math.ceil(visibleReservations.length / ITEMS_PER_PAGE)
+    if (currentPage > maxPage) {
+      setCurrentPage(maxPage > 0 ? maxPage : 1)
+    }
+  }, [showCanceled, visibleReservations.length])
 
   const goToPage = (page: number) => {
     if (page < 1 || page > totalPages) return
@@ -209,18 +216,18 @@ const currentItems = visibleReservations.slice(indexOfFirstItem, indexOfLastItem
             )}
 
             {!loading && reservations.length > 0 && (
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "8px" }}>
-              <label style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "rgba(255,255,255,0.5)", cursor: "pointer" }}>
-                <input
-                  type="checkbox"
-                  checked={showCanceled}
-                  onChange={() => setShowCanceled(!showCanceled)}
-                  style={{ accentColor: "#76b817", cursor: "pointer" }}
-                />
-                Prikaži otkazane rezervacije
-              </label>
-            </div>
-          )}
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "8px" }}>
+                <label style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "rgba(255,255,255,0.5)", cursor: "pointer" }}>
+                  <input
+                    type="checkbox"
+                    checked={showCanceled}
+                    onChange={() => setShowCanceled(!showCanceled)}
+                    style={{ accentColor: "#76b817", cursor: "pointer" }}
+                  />
+                  Prikaži otkazane rezervacije
+                </label>
+              </div>
+            )}
 
             {!loading && currentItems.map(r => {
               const s = STATUS_META[r.status] ?? { label: r.status, color: "#888" }
@@ -305,7 +312,6 @@ const currentItems = visibleReservations.slice(indexOfFirstItem, indexOfLastItem
                 </button>
               </div>
             )}
-            {/* ---------------------------------------- */}
 
             {!loading && reservations.length > 0 && (
               <button
@@ -327,7 +333,7 @@ const currentItems = visibleReservations.slice(indexOfFirstItem, indexOfLastItem
         </div>
       </div>
 
-      {/* ---------- MODALS (completely unchanged) ---------- */}
+      {/* Modals – unchanged */}
       {showModal && (
         <div
           onClick={() => setShowModal(false)}
