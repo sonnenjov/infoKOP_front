@@ -49,7 +49,9 @@ export default function Dogadjaji({ activeSeason }: Props) {
   console.log('dogadjaj:', dogadjaj);
   setReserving(dogadjaj.id);
   try {
-    const companyId = dogadjaj.company?.id ?? dogadjaj.company_id ?? null;
+const companyId = typeof dogadjaj.company === 'object'
+  ? dogadjaj.company?.id
+  : dogadjaj.company ?? null;
 
     const payload = {
       company: companyId,
