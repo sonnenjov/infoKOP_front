@@ -2,15 +2,12 @@
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-import './styles/indexe.css'
 import App_Routes from './routes.tsx'
 import { Season, useSeason } from './hooks/useSeason.ts'
 import { JSX } from 'react'
 import './i18n'
 import {AuthProvider}  from './hooks/useAuth.tsx'
 import { AppDataProvider } from './hooks/useAppData.tsx'
-import "./styles/vesti.css"
-import "./styles/vest_single.css"
 export function App(): JSX.Element {
   return (
     <BrowserRouter>
