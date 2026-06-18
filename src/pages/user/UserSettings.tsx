@@ -80,7 +80,7 @@ function CustomSelect({ label, items, defaultValue }: { label: string; items: { 
 }
 
 export default function UserSettings() {
-  const { userAcc, activeSeason } = useOutletContext<OutletContext>();
+  const { userAcc, activeSeason,refreshUser } = useOutletContext<OutletContext>();
   const [twoFaEnabled, setTwoFaEnabled] = useState(false)
   const [activeEye, setActiveEye] = useState<'closed' | 'open'>("closed")
   const [activeEyeNew, setActiveEyeNew] = useState<'closed' | 'open'>("closed")
@@ -193,7 +193,7 @@ export default function UserSettings() {
       if (response.ok) {
         const result = await response.json();
         console.log("result:", result)
-
+        await refreshUser()
         if (result.avatar_url) {
           setPreviewImage(result.avatar_url)
           setLocalAvatar(result.avatar_url)

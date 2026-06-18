@@ -1,29 +1,29 @@
-
 .ski_pass_main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas: 
-  "box_1 box_1"
-  "box_1 box_1"
-  "box_2 box_2";
+    "box_1 box_1"
+    "box_1 box_1"
+    "box_2 box_2";
   gap: 2rem;
   padding: 2rem;
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100dvh;        /* changed from height to min-height */
+  overflow-y: auto;          /* changed from hidden to auto */
   background: #0a0e0a;
   font-family: JakartaReg;
-         background: radial-gradient(ellipse at 25% 50%, #497a1565 0%, #1e3a084d 45%, #090e04 100%);
-
+  background: radial-gradient(ellipse at 25% 50%, #497a1565 0%, #1e3a084d 45%, #090e04 100%);
 }
+
 .texts {
   background-color: transparent;
 }
+
 .skipass_left_column {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
-  overflow-y: hidden;
+  overflow-y: auto;          /* changed from hidden to auto */
   height: 100%;
   justify-content: space-between;
 }
@@ -32,10 +32,9 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  overflow-y: hidden;
+  overflow-y: auto;          /* changed from hidden to auto */
   height: 100%;
   padding-right: 0.5rem;
-  
 }
 
 .box_skipass {
@@ -86,7 +85,7 @@
   max-width: 450px;
   height: 100%;
   -webkit-box-shadow: 0px 0px 12px 5px rgba(118,184,23,0.5); 
-box-shadow: 0px 0px 12px 5px rgba(118,184,23,0.5);
+  box-shadow: 0px 0px 12px 5px rgba(118,184,23,0.5);
 }
 
 .skipass_active {
@@ -217,7 +216,6 @@ box-shadow: 0px 0px 12px 5px rgba(118,184,23,0.5);
   font-size: 1.2rem;
 }
 
-
 .packages-section {
   background: #0d0f0d;
   border-radius: 1rem;
@@ -277,7 +275,6 @@ box-shadow: 0px 0px 12px 5px rgba(118,184,23,0.5);
   position: relative;
   transition: transform 0.2s, border 0.2s;
   border: 2px solid transparent;
-  
 }
 
 .package-card:hover {
@@ -355,8 +352,6 @@ box-shadow: 0px 0px 12px 5px rgba(118,184,23,0.5);
   transform: scale(0.98);
 }
 
-
-
 .skipass_inactive {
   background: #f3f4f6;
   border-radius: 1.5rem;
@@ -394,7 +389,7 @@ box-shadow: 0px 0px 12px 5px rgba(118,184,23,0.5);
   cursor: pointer;
 }
 
-/* Responsive */
+/* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .ski_pass_main {
     padding: 1rem;
@@ -407,57 +402,53 @@ box-shadow: 0px 0px 12px 5px rgba(118,184,23,0.5);
 }
 
 @media (max-width: 768px) {
+  /* remove stray rule that wasn't used */
+  /* .mobile-account-main { height: fit-content; } — removed */
 
-
-  .mobile-account-main {
-    height: fit-content
-  };
   .ski_pass_main {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto ;
-  grid-template-areas: 
-  "box_1"
-  "box_2";
-  gap: 3em;
-  padding: 2em;
-  padding-top: 4em;
-  height: fit-content;
-  overflow: auto;
-  overflow-x: hidden;
-  background: #0a0e0a;
-  font-family: JakartaReg;
-         background: radial-gradient(ellipse at 25% 50%, #497a1565 0%, #1e3a084d 45%, #090e04 100%);
-  height: fit-content;
-}
-.box_skipass_content {
-  display: flex;
-  flex-direction: column;
-}
-.box_skipass_content .texts {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1em;
-}
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+      "box_1"
+      "box_2";
+    gap: 3rem;
+    padding: 2rem;
+    padding-top: 4rem;
+    height: auto;                /* was fit-content, changed to auto */
+    overflow: visible;           /* was auto, but visible avoids scroll within container */
+    background: #0a0e0a;
+    background: radial-gradient(ellipse at 25% 50%, #497a1565 0%, #1e3a084d 45%, #090e04 100%);
+    min-height: auto;           /* reset min-height for mobile */
+  }
 
-.box_skipass_content .texts h1 {
-  font-size: 1.2em;
-}
-.box_skipass_content .texts p {
-  font-size: 0.7em;
-  width: 100%;
-}
+  .box_skipass_content {
+    display: flex;
+    flex-direction: column;
+  }
 
+  .box_skipass_content .texts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+  }
 
+  .box_skipass_content .texts h1 {
+    font-size: 1.2em;
+  }
 
-  
+  .box_skipass_content .texts p {
+    font-size: 0.7em;
+    width: 100%;
+  }
+
   .skipass_left_column,
   .skipass_right_column {
     height: fit-content;
-    overflow-y: visible;
+    overflow-y: visible;      /* allow natural expansion */
   }
-  
+
   .packages-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -482,11 +473,10 @@ box-shadow: 0px 0px 12px 5px rgba(118,184,23,0.5);
   }
 
   .texts h1 {
-  font-size: 1rem;
-}
+    font-size: 1rem;
+  }
 
-.texts p {
-  font-size: 0.4rem;
-}
-
+  .texts p {
+    font-size: 0.4rem;
+  }
 }

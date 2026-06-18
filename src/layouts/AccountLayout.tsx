@@ -66,6 +66,25 @@ export default function AccountLayout({ activeSeason }: Props) {
   }, [])
 
 
+  
+  
+  const refreshUser = async () => {
+    try {
+      const response = await apiReq.get('/users/me/');
+      setUserAcc(response.data);
+      // Optionally update localStorage cache
+      if (response.data.avatar_url) {
+        localStorage.setItem('user_avatar', response.data.avatar_url);
+      }
+    } catch (error) {
+      console.error("Error refreshing user profile:", error);
+    }
+  };
+  
+  
+  useEffect(() => {
+  refreshUser();
+}, []);
 
   useEffect(() => {
   const controlLogo = () => {
@@ -95,8 +114,12 @@ export default function AccountLayout({ activeSeason }: Props) {
 
         <div className="sidebar-user">
           <div className="sidebar-avatar">
-            {userAcc?.first_name?.[0]?.toUpperCase() ?? "U"}
-          </div>
+                  {userAcc?.avatar_url ? (
+    <img src={userAcc.avatar_url} alt="Avatar" />
+  ) : (
+    userAcc?.first_name?.[0]?.toUpperCase() ?? "U"
+  )}
+            </div>
           <div>
             <p className="sidebar-user-name"> {userAcc?.first_name && userAcc?.last_name 
         ? `${userAcc.first_name} ${userAcc.last_name}` 
@@ -141,7 +164,7 @@ export default function AccountLayout({ activeSeason }: Props) {
             <img src={logo} alt="" />
           </div>
           <main className="mobile-account-main">
-            <Outlet context={{ userAcc, activeSeason }} />
+            <Outlet context={{ userAcc, activeSeason, refreshUser}} />
           </main>
           <MobileBottomNav handleLogout={handleLogout} />
         </div>
