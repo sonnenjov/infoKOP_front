@@ -158,7 +158,6 @@ export default function PartnerLayout() {
             <div className="sidebar-footer">
               <button className="sidebar-logout" onClick={handleLogout}>
                 <span className="material-symbols-outlined" style={{ fontSize: "16px" }}>logout</span>
-                {t("logout")}
               </button>
             </div>
           </aside>

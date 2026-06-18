@@ -363,3 +363,16 @@
     padding: 16px;
   }
 }
+
+
+.mobile-bottom-nav .material-symbols-outlined {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.mobile-bottom-nav .mobile-nav-link--active .material-symbols-outlined {
+  color: #95da3c;
+}
+
+.mobile-bottom-nav .mobile-logout-btn .material-symbols-outlined {
+  color: rgba(255, 100, 100, 0.8);
+}
