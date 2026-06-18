@@ -37,7 +37,7 @@ function WeatherReport({ activeSeason }: { activeSeason: string }) {
   const [weather, setWeather] = useState<WeatherData | null>(null)
   
   useEffect(() => {
-    fetch(`${API_URL}//api/weather/fetchweather/`)
+    fetch(`${API_URL}/api/weather/fetchweather/`)
     .then((response) => response.json())
     
     .then((data) => {

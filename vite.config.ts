@@ -4,7 +4,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   build: {
     cssMinify: false,
+    copyPublicDir: true,
   },
   plugins: [react()],
-  base: '/',  // For root deployment
+  base: '/',  
 })
