@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { apiFetch } from './useApi'
 
-export interface Smestaj {
-  id: number; slug: string; naziv: string; opis: string
-  tip: 'hotel' | 'apartman' | 'vila'; season: string
-  cena_po_nocenju: number; udaljenost_od_staza: number; kapacitet: number
-  image_url: string | null; tags: string[]
-  company_name: string; company_slug: string
+interface SmestajItem {
+    id: number;
+    naziv: string;
+    cena_po_nocenju: number;
+    kapacitet: number;
+    company?: number | { id: number; company_name: string };  // ← fix this
+    company_name?: string;  // ← add this
 }
 
 interface PaginatedResponse<T> { count: number; next: string | null; previous: string | null; results: T[] }

@@ -81,7 +81,9 @@ export default function SmestajReservationModal({
         
         try {
             // -- Use the same pattern as the working ReservationModal --
-            const companyId = smestaj.company?.id ?? null;
+           const companyId = typeof smestaj.company === 'number' 
+                ? smestaj.company 
+                : smestaj.company?.id ?? null;
 
             const payload = {
                 company: companyId,                          // numeric ID or null
