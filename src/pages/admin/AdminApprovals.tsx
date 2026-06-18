@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getToken } from "../../hooks/auth";
 import "../../styles/admin/admin_approvals.css";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../config";
 
 interface CompanyUser {
   id: number;
@@ -41,7 +42,7 @@ export default function AdminApprovals() {
     try {
       setLoading(true);
       const token = getToken();
-      const res = await fetch("http://192.168.1.6:8000/api/admin/companies/pending/?page_size=50", {
+      const res = await fetch(`${API_URL}/api/admin/companies/pending/?page_size=50`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch");
@@ -68,7 +69,7 @@ export default function AdminApprovals() {
     setAction(id, "loading");
     try {
       const token = getToken();
-      const res = await fetch(`http://192.168.1.6:8000/api/admin/companies/${id}/approve/`, {
+      const res = await fetch(`${API_URL}/api/admin/companies/${id}/approve/`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       });
@@ -91,7 +92,7 @@ export default function AdminApprovals() {
     setRejectModal({ open: false, companyId: null, reason: "" });
     try {
       const token = getToken();
-      const res = await fetch(`http://192.168.1.6:8000/api/admin/companies/${companyId}/reject/`, {
+      const res = await fetch(`${API_URL}/api/admin/companies/${companyId}/reject/`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify({ reason }),

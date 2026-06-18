@@ -4,6 +4,7 @@ import '../../styles/partner_reg.css'
 import { Season } from "../../hooks/useSeason";
 import logo_leto from "../../branding/images/logos/2Asset 1.png"
 import { Link } from "react-router-dom";
+import { API_URL } from "../../config";
 
 interface Props {
   activeSeason: Season;
@@ -13,7 +14,7 @@ const registerCompanyApi = async (formData: { email: string; phone: string; pass
   try {
     console.log("Šaljem podatke:", formData);
     
-    const response = await fetch('http://192.168.1.6:8000/api/users/register/company/', {
+    const response = await fetch(`${API_URL}/api/users/register/company/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)

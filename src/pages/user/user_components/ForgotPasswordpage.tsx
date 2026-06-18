@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react"
 import { Link } from "react-router-dom"
 import "../../../styles/auth.css"
+import { API_URL } from "../../../config"
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("")
@@ -13,7 +14,7 @@ export default function ForgotPasswordPage() {
     setStatus("sending")
 
     try {
-      const res = await fetch("http://192.168.1.6:8000/api/users/password-reset/", {
+      const res = await fetch(`${API_URL}/api/users/password-reset/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

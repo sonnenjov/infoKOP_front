@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react"
 import { Link, useNavigate, useSearchParams } from "react-router-dom"
 import "../../../styles/auth.css"
+import { API_URL } from "../../../config"
 
 
 export default function ResetPasswordPage() {
@@ -30,7 +31,7 @@ export default function ResetPasswordPage() {
 
     setStatus("saving")
     try {
-      const res = await fetch("http://192.168.1.6:8000/api/users/password-reset/confirm/", {
+      const res = await fetch(`${API_URL}/api/users/password-reset/confirm/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ uid, token, new_password: passwords.new_password }),

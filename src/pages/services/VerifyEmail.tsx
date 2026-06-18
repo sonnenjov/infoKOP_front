@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSearchParams, useNavigate } from "react-router-dom"
+import { API_URL } from "../../config"
 
 export default function VerifyEmail() {
   const [searchParams] = useSearchParams()
@@ -10,7 +11,7 @@ export default function VerifyEmail() {
     const uid   = searchParams.get('uid')
     const token = searchParams.get('token')
 
-    fetch(`http://192.168.1.6:8000/api/users/verify-email/?uid=${uid}&token=${token}`)
+    fetch(`${API_URL}/api/users/verify-email/?uid=${uid}&token=${token}`)
       .then(res => res.json())
       .then(data => {
         if (data.detail === 'Email potvrđen! Čekajte odobrenje administratora.') {

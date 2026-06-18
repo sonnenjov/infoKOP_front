@@ -4,6 +4,7 @@ import { useOutletContext } from "react-router-dom"
 import { getToken } from "../../hooks/auth";
 import { Season } from "../../hooks/useSeason";
 import TwoFactorSetup from "../../hooks/TwoFactorSetup";
+import { API_URL } from "../../config";
 
 type OutletContext = {
   userAcc: {
@@ -113,7 +114,7 @@ export default function UserSettings() {
 
   useEffect(() => {
     const token = getToken()
-    fetch('http://192.168.1.6:8000/api/users/2fa/status/', {
+    fetch(`${API_URL}/api/users/2fa/status/`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(r => r.json())
@@ -134,7 +135,7 @@ export default function UserSettings() {
 
     try {
       const token = getToken()
-      const res = await fetch('http://192.168.1.6:8000/api/users/me/change-password/', {
+      const res = await fetch(`${API_URL}/api/users/me/change-password/`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -181,7 +182,7 @@ export default function UserSettings() {
 
     try {
       const token = getToken()
-      const response = await fetch("http://192.168.1.6:8000/api/users/me/update/", {
+      const response = await fetch(`${API_URL}/api/users/me/update/`, {
         method: "PATCH",
         body: dataToSend,
         headers: {

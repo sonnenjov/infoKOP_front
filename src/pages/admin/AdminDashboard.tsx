@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Weather_accounts from "../../layouts/Weather_accounts";
 import "../../styles/admin/dashboard_admin.css";
 import { getToken } from "../../hooks/auth";
+import { API_URL } from "../../config";
 
 interface TrafficItem {
   value: number;
@@ -68,7 +69,7 @@ export default function AdminDashboard() {
       setLoading(true);
       const token = getToken();
       const response = await fetch(
-        "http://192.168.1.6:8000/api/admin/dashboard/",
+        `${API_URL}/api/admin/dashboard/`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

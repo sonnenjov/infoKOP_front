@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import "../styles/vest_single.css"
+import { API_URL } from "../config"
 
 type Vest = {
   id: number
@@ -50,7 +51,7 @@ export default function VestSingle() {
     window.scrollTo(0, 0)
     setLoading(true)
     setArticle(null)
-    fetch(`http://192.168.1.6:8000/api/news/${id}/`)
+    fetch(`${API_URL}/api/news/${id}/`)
       
        .then(r => {
         if (!r.ok) throw new Error('not found')  
@@ -58,7 +59,7 @@ export default function VestSingle() {
       })
       .then(data => {
         setArticle(data)
-        return fetch(`http://192.168.1.6:8000/api/news/all_news/`)
+        return fetch(`${API_URL}/api/news/all_news/`)
       })
       .then(r => r.json())
       .then((all: Vest[]) => {

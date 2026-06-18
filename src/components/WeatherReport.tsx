@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import '../styles/weather.css'
 import { getWeatherIconName } from '../services/iconMap'; // For Option 2
 import { useMediaQuery } from '../hooks/useMediaQueries';
-
+import { API_URL } from '../config';
 
 export function WeatherDisplay({ weatherCode }: { weatherCode: number }) {
      const iconUrl = getWeatherIconName(weatherCode);
@@ -37,7 +37,7 @@ function WeatherReport({ activeSeason }: { activeSeason: string }) {
   const [weather, setWeather] = useState<WeatherData | null>(null)
   
   useEffect(() => {
-    fetch("http://192.168.1.6:8000/api/weather/fetchweather/")
+    fetch(`${API_URL}//api/weather/fetchweather/`)
     .then((response) => response.json())
     
     .then((data) => {

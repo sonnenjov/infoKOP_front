@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import "../styles/vesti.css"
 import axios from 'axios';
 import { getToken } from "../hooks/auth";
+import { API_URL } from "../config";
 type Vest = {
   id: number
   title: string
@@ -51,7 +52,7 @@ export default function Vesti() {
   const PER_PAGE = 6
 
   useEffect(() => {
-    fetch("http://192.168.1.6:8000/api/news/all_news/")
+    fetch(`${API_URL}/api/news/all_news/`)
       .then(r => r.json())
       .then(d => setNews(d))
       .catch(console.error)
@@ -99,7 +100,7 @@ export default function Vesti() {
 
     try {
       const response = await axios.post(
-        "http://192.168.1.6:8000/api/newsletter/subscribe/",
+        `${API_URL}/api/newsletter/subscribe/`,
         {email: email},
         {headers:headers}
       );

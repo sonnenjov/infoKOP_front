@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getWeatherIconName } from "../services/iconMap"
 import "../styles/user/weather.css"
+import { API_URL } from "../config"
 
 
 const getWeatherDescription = (code: number): string => {
@@ -81,7 +82,7 @@ export default  function Weather_accounts() {
   const [weather, setWeather] = useState<WeatherData | null>(null)
   
   useEffect(() => {
-    fetch("http://192.168.1.6:8000/api/weather/fetchweather/")
+    fetch(`${API_URL}/api/weather/fetchweather/`)
     .then((response) => response.json())
     
     .then((data) => {

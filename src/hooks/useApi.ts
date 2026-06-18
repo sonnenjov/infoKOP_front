@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api'
+const BASE = import.meta.env.VITE_API_URL ?? 'http://192.168.1.6:8000/api'
 
 export async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
   const savedUserString = localStorage.getItem('infokop_auth')
@@ -7,7 +7,7 @@ export async function apiFetch<T>(path: string, options?: RequestInit): Promise<
   if (savedUserString) {
     try {
       token = JSON.parse(savedUserString)?.access ?? null
-    } catch {}
+    } catch { /* empty */ }
   }
 
   const res = await fetch(`${BASE}${path}`, {

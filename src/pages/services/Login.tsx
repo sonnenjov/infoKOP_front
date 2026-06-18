@@ -4,6 +4,7 @@ import logo_leto from "../../branding/images/logos/2Asset 1.png"
 import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { API_URL } from '../../config';
 
 type LoginType = 'user' | 'company' | 'admin' | 'reporter';
 
@@ -14,10 +15,10 @@ interface Props {
 
 const loginApi = async (type: LoginType, credentials: { email: string; password: string }) => {
   const endpoints = {
-    user:     'http://192.168.1.6:8000/api/users/token/',
-    company:  'http://192.168.1.6:8000/api/users/token/',
-    admin:    'http://192.168.1.6:8000/api/users/token/',
-    reporter: 'http://192.168.1.6:8000/api/users/token/',
+    user:     `${API_URL}/api/users/token/`,
+    company:  `${API_URL}/api/users/token/`,
+    admin:    `${API_URL}/api/users/token/`,
+    reporter: `${API_URL}/api/users/token/`,
   }
   const response = await fetch(endpoints[type], {
     method: 'POST',
@@ -105,7 +106,7 @@ const handle2FASubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   setError("")
 
   try {
-    const res = await fetch('http://192.168.1.6:8000/api/users/2fa/login/verify/', {
+    const res = await fetch(`${API_URL}/api/users/2fa/login/verify/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ code: otpCode, temp_token: tempToken })

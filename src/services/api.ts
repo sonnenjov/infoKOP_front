@@ -1,9 +1,10 @@
 import axios, { Axios } from "axios";
+import { API_URL } from "../config";
 
 
 
 const api:Axios = axios.create({
-  baseURL: "127.0.0:8000",
+  baseURL: API_URL,
   timeout: 5000,
   headers: {
     'Content-Type': "application/json"

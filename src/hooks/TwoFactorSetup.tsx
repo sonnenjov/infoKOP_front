@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { getToken } from "../hooks/auth"
+import { API_URL } from "../config"
 
 type Step = 'idle' | 'qr' | 'verify' | 'backup' | 'done'
 
@@ -55,7 +56,7 @@ export default function TwoFactorSetup({ isEnabled, onStatusChange }: Props) {
 }, [isEnabled])
 
   const handleEnable = async () => {
-    const res = await fetch('http://192.168.1.6:8000/api/users/2fa/enable/', {
+    const res = await fetch(`${API_URL}api/users/2fa/enable/`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -71,7 +72,7 @@ export default function TwoFactorSetup({ isEnabled, onStatusChange }: Props) {
 
   const handleVerify = async () => {
     setError('')
-    const res = await fetch('http://192.168.1.6:8000/api/users/2fa/verify/', {
+    const res = await fetch(`${API_URL}api/users/2fa/verify/`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -95,7 +96,7 @@ export default function TwoFactorSetup({ isEnabled, onStatusChange }: Props) {
 
   const handleDisable = async () => {
     setError('')
-    const res = await fetch('http://192.168.1.6:8000/api/users/2fa/disable/', {
+    const res = await fetch(`${API_URL}api/users/2fa/disable/`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,

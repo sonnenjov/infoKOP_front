@@ -5,6 +5,7 @@ import '../../styles/user_reg.css'
 import { Season } from "../../hooks/useSeason";
 import logo_leto from "../../branding/images/logos/2Asset 1.png"
 import { Link } from "react-router-dom";
+import { API_URL } from "../../config";
 
 interface Props {
   activeSeason: Season;
@@ -12,7 +13,7 @@ interface Props {
 
 const registerUserAPI = async (formData: any) => {
   try {
-    const response = await fetch('http://192.168.1.6:8000/api/users/register/', {
+    const response = await fetch(`${API_URL}/api/users/register/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)

@@ -6,6 +6,7 @@ import ActivityCard from "../components/ActivityCard";
 import CreateActivityModal from "../components/CreateActivityModal";
 import ReservationModal from "../components/ReservationModal";
 import { Activity, WeatherData } from "../types";
+import { API_URL } from "../config";
 
 interface Props { 
   activeSeason: Season 
@@ -30,7 +31,7 @@ export default function Aktivnosti({ activeSeason }: Props) {
     try {
       setLoading(true);
       const response = await fetch(
-        `http://127.0.0.1:8000/api/aktivnosti/?season=${activeSeason}`
+        `${API_URL}/api/aktivnosti/?season=${activeSeason}`
       );
       const data = await response.json();
       setActivities(data.results || data);
@@ -43,7 +44,7 @@ export default function Aktivnosti({ activeSeason }: Props) {
 
   const fetchWeather = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/weather/fetchweather");
+      const response = await fetch(`${API_URL}/api/weather/fetchweather`);
       const data = await response.json();
       setWeather(data);
     } catch (error) {

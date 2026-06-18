@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Season } from "../hooks/useSeason";
 import { getToken } from "../hooks/auth";
-
+import { API_URL } from "../config" 
 interface Props {
   onClose: () => void;
   onSuccess: () => void;
@@ -37,7 +37,7 @@ export default function CreateActivityModal({ onClose, onSuccess, season }: Prop
     const token = getToken()
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/aktivnosti/create/', {
+      const response = await fetch(`${API_URL}/api/aktivnosti/create/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
