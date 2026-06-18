@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import "../../styles/user/reservations_user.css"
 
 interface Reservation {
+  created_at: string
   id: number
   source: string
   service_name: string
@@ -46,7 +47,6 @@ function formatFullDate(iso: string | null) {
   return `${parseInt(d)}. ${months[parseInt(m) - 1]} ${y}.`
 }
 
-// ---------- PAGINATION SETTINGS ----------
 const ITEMS_PER_PAGE = 10
 
 export default function UserReservations() {
@@ -54,7 +54,6 @@ export default function UserReservations() {
   const [reservations, setReservations] = useState<Reservation[]>([])
   const [loading, setLoading] = useState(true)
 
-  // Pagination state (client-side)
   const [currentPage, setCurrentPage] = useState(1)
 
   const [showModal, setShowModal] = useState(false)
@@ -63,7 +62,6 @@ export default function UserReservations() {
   const [cancelling, setCancelling] = useState(false)
   const [confirmingCancel, setConfirmingCancel] = useState(false)
 
-  // ---------- FETCH (unchanged) ----------
   const fetchReservations = () => {
     setLoading(true)
     apiReq.get('/rezervacije/reservations/')
@@ -81,15 +79,16 @@ export default function UserReservations() {
           amount: r.amount ?? null,
           guests: r.guests ?? null,
           notes: r.notes ?? '',
+          created_at: r.created_at ?? '',
         }))
-        all.sort((a, b) => {
-          if (!a.date_from && !b.date_from) return 0
-          if (!a.date_from) return 1
-          if (!b.date_from) return -1
-          return b.date_from.localeCompare(a.date_from)
-        })
-        setReservations(all)
-        setCurrentPage(1) // reset to first page on new data
+            all.sort((a, b) => {
+        if (!a.created_at && !b.created_at) return 0;
+        if (!a.created_at) return 1; 
+        if (!b.created_at) return -1;
+        return b.created_at.localeCompare(a.created_at);
+      });
+              setReservations(all)
+        setCurrentPage(1) 
       })
       .catch(err => {
         if (err.response?.status === 401) navigate('/account/login')
@@ -102,7 +101,6 @@ export default function UserReservations() {
     fetchReservations()
   }, [])
 
-  // ---------- PAGINATION HELPERS ----------
   const totalPages = Math.ceil(reservations.length / ITEMS_PER_PAGE)
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE
@@ -141,7 +139,6 @@ export default function UserReservations() {
     return pages
   }
 
-  // ---------- MODAL HANDLERS (unchanged) ----------
   const handleReservationClick = (reservation: Reservation) => {
     setSelectedReservation(reservation)
     setShowDetailModal(true)
@@ -179,7 +176,6 @@ export default function UserReservations() {
     { key: "ugostitelji",icon: "restaurant",       label: "Ugostitelji",description: "Restorani, kafici",                    path: "/ugostitelji" },
   ]
 
-  // ---------- RENDER ----------
   return (
     <>
       <div className="main_reservations">
@@ -239,7 +235,6 @@ export default function UserReservations() {
               )
             })}
 
-            {/* ---------- PAGINATION CONTROLS ---------- */}
             {!loading && totalPages > 1 && (
               <div style={{
                 display: "flex",
