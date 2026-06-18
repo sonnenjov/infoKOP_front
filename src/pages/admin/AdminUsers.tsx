@@ -245,10 +245,7 @@ export default function AdminUsers() {
           </button>
         </div>
 
-        <div className="leftside_exportcsv">
-          <span className="material-symbols-outlined download">download</span>
-          EXPORT CSV
-        </div>
+      
       </div>
 
       <div className="list_users">

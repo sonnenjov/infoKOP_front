@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Season } from "../hooks/useSeason";
 import { apiReq } from "../hooks/api";
-
+import "../styles/reservation_card.css"
 interface SmestajItem {
     id: number;
     naziv: string;
