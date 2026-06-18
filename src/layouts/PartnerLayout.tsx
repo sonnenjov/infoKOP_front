@@ -29,7 +29,6 @@ const MobileBottomNav = ({ handleLogout, visibleNav }: { handleLogout: () => voi
         }
       >
         <span className="material-symbols-outlined mobile-nav-icon">{icon}</span>
-        <span className="mobile-nav-label">{labelKey}</span>
       </NavLink>
     ))}
     <button className="mobile-nav-link mobile-logout-btn" onClick={handleLogout}>
@@ -52,7 +51,6 @@ export default function PartnerLayout() {
 
   const fetchCompanyProfile = async () => {
     try {
-      // Try the correct endpoint for company profile
       const response = await apiReq.get('/users/company/profile/')
       console.log("Company data:", response.data)
       setCompanyAcc(response.data)
