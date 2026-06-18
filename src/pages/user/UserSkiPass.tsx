@@ -27,20 +27,15 @@ interface SkiPass {
   qr_code: string
 }
 
-const PASS_TYPE_MAP: Record<number, string> = {
-  1: 'daily',
-  2: 'weekly',     
-  3: 'weekly',
-  4: 'seasonal',
-}
-
 export default function UserSkiPass() {
   const [activePass, setActivePass] = useState<SkiPass | null>(null)
   const [loading, setLoading] = useState(true)
   const [purchasing, setPurchasing] = useState(false)
+  const [deleting, setDeleting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const { userAcc } = useOutletContext<OutletContext>()
   const token = getToken()
+
   const packages = [
     { id: 1, name: "1 Dan", description: "Savršeno za jednodnevni izlet", price: "€42", priceDetail: "/dan", popular: false, passType: "daily", pricePaid: 42 },
     { id: 2, name: "3 Dana", description: "Produženi vikend sa popustom", price: "€115", priceDetail: "/ukupno", popular: true, passType: "daily3", pricePaid: 115 },
@@ -48,7 +43,6 @@ export default function UserSkiPass() {
     { id: 4, name: "Sezonski", description: "Neograničeno skijanje tokom sezone", price: "€580", priceDetail: "/sezona", popular: false, passType: "seasonal", pricePaid: 580 },
   ]
 
- useEffect(() => {
   const fetchPasses = async () => {
     try {
       const { data } = await apiReq.get('/skipass/my-passes/')
@@ -60,26 +54,42 @@ export default function UserSkiPass() {
       setLoading(false)
     }
   }
-  fetchPasses()
-}, [])
 
-
+  useEffect(() => {
+    fetchPasses()
+  }, [])
 
   const handleBuy = async (passType: string, pricePaid: number) => {
-  setPurchasing(true)
-  setError(null)
-  try {
-    const { data } = await apiReq.post('/skipass/purchase/', {
-      pass_type: passType,
-      price_paid: pricePaid
-    })
-    setActivePass(data)
-  } catch {
-    setError('Kupovina nije uspela. Pokušajte ponovo.')
-  } finally {
-    setPurchasing(false)
+    setPurchasing(true)
+    setError(null)
+    try {
+      const { data } = await apiReq.post('/skipass/purchase/', {
+        pass_type: passType,
+        price_paid: pricePaid
+      })
+      setActivePass(data)
+    } catch {
+      setError('Kupovina nije uspela. Pokušajte ponovo.')
+    } finally {
+      setPurchasing(false)
+    }
   }
-}
+
+  const handleDelete = async () => {
+    if (!activePass) return
+    if (!window.confirm('Da li ste sigurni da želite da obrišete ovu propusnicu? Ova akcija je nepovratna.')) return
+
+    setDeleting(true)
+    setError(null)
+    try {
+      await apiReq.delete(`/skipass/delete/${activePass.id}/`)
+      setActivePass(null)
+    } catch (err: any) {
+      setError(err.response?.data?.error || 'Brisanje nije uspelo.')
+    } finally {
+      setDeleting(false)
+    }
+  }
 
   const formatDate = (iso: string) =>
     new Date(iso).toLocaleDateString('sr-RS', { day: '2-digit', month: '2-digit', year: '2-digit' })
@@ -129,6 +139,26 @@ export default function UserSkiPass() {
                         <span className="detail-value">{formatDate(activePass.valid_until)}</span>
                       </div>
                     </div>
+                    {/* Delete button */}
+                    <button
+                      className="delete-pass-btn"
+                      onClick={handleDelete}
+                      disabled={deleting}
+                      style={{
+                        marginTop: '12px',
+                        padding: '6px 16px',
+                        background: 'rgba(239, 68, 68, 0.2)',
+                        border: '1px solid rgba(239, 68, 68, 0.4)',
+                        borderRadius: '8px',
+                        color: '#ef4444',
+                        cursor: deleting ? 'not-allowed' : 'pointer',
+                        fontSize: '14px',
+                        fontWeight: 600,
+                      }}
+                    >
+                      {deleting ? 'Brisanje...' : 'Obriši propusnicu'}
+                    </button>
+                    {error && <p style={{ color: '#ef4444', marginTop: '8px', fontSize: '14px' }}>{error}</p>}
                   </div>
                 </div>
               ) : (
@@ -172,14 +202,14 @@ export default function UserSkiPass() {
                   <span className="price">{pkg.price}</span>
                   <span className="price-detail">{pkg.priceDetail}</span>
                 </div>
-              <button
-                className="buy-btn"
-                disabled={purchasing || !!activePass} 
-                onClick={() => handleBuy(pkg.passType, pkg.pricePaid)}
-                title={activePass ? 'Već imate aktivan ski pass' : ''}
-              >
-                {purchasing ? 'Obrada...' : activePass ? 'PASS AKTIVAN' : 'KUPI ODMAH'}
-            </button>
+                <button
+                  className="buy-btn"
+                  disabled={purchasing || !!activePass}
+                  onClick={() => handleBuy(pkg.passType, pkg.pricePaid)}
+                  title={activePass ? 'Već imate aktivan ski pass' : ''}
+                >
+                  {purchasing ? 'Obrada...' : activePass ? 'PASS AKTIVAN' : 'KUPI ODMAH'}
+                </button>
               </div>
             ))}
           </div>
