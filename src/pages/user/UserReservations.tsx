@@ -55,12 +55,12 @@ export default function UserReservations() {
   const [showDetailModal, setShowDetailModal] = useState(false)
   const [cancelling, setCancelling] = useState(false)
   const [confirmingCancel, setConfirmingCancel] = useState(false)
-  useEffect(() => {
+ const fetchReservations = () => {
+    setLoading(true)
     apiReq.get('/rezervacije/reservations/')
       .then(res => {
         const data = res.data
         const list: any[] = Array.isArray(data) ? data : data.results ?? []
-
         const all: Reservation[] = list.map(r => ({
           id: r.id,
           source: r.service_type ?? '',
@@ -73,20 +73,24 @@ export default function UserReservations() {
           guests: r.guests ?? null,
           notes: r.notes ?? '',
         }))
-
         all.sort((a, b) => {
           if (!a.date_from && !b.date_from) return 0
           if (!a.date_from) return 1
           if (!b.date_from) return -1
           return b.date_from.localeCompare(a.date_from)
         })
-
         setReservations(all)
       })
       .catch(err => {
         if (err.response?.status === 401) navigate('/account/login')
       })
       .finally(() => setLoading(false))
+  }
+ 
+ 
+ 
+  useEffect(() => {
+    fetchReservations()
   }, [])
 
   const handleReservationClick = (reservation: Reservation) => {

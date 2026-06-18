@@ -46,6 +46,7 @@ export default function Dogadjaji({ activeSeason }: Props) {
   const hasMore = data?.next != null;
 
   const reserve = async (dogadjaj: any) => {
+  console.log('dogadjaj:', dogadjaj);
   setReserving(dogadjaj.id);
   try {
     const companyId = dogadjaj.company?.id ?? dogadjaj.company_id ?? null;
