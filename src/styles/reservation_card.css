@@ -1,11 +1,13 @@
 
 .modal-overlay {
-  padding: 0;              
+  padding: 0;     
+
   align-items: flex-end;
   overflow: hidden;
 }
 
 .modal-content {
+  padding-bottom: 3em;
   min-width: 0;
   width: 100%;
   max-width: 100%;         /* never wider than viewport */
