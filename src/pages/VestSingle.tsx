@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import "../styles/vest_single.css"
 import { API_URL } from "../config"
 
 type Vest = {
