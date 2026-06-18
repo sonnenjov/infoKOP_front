@@ -33,7 +33,6 @@ const MobileBottomNav = ({ handleLogout, visibleNav }: { handleLogout: () => voi
     ))}
     <button className="mobile-nav-link mobile-logout-btn" onClick={handleLogout}>
       <span className="material-symbols-outlined mobile-nav-icon">logout</span>
-      <span className="mobile-nav-label">Odjava</span>
     </button>
   </div>
 )

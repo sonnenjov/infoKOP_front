@@ -216,7 +216,7 @@
 
 .mobile-nav-icon {
   font-size: 24px;
-  color: white;
+  color: white !important;
   opacity: 0.6;
 }
 
@@ -234,7 +234,7 @@
 
 .mobile-nav-link--active .mobile-nav-icon {
   opacity: 1;
-  color: #95da3c;
+  color: #95da3c !important;
 }
 
 .mobile-nav-link--active .mobile-nav-label {
