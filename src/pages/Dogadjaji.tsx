@@ -46,29 +46,34 @@ export default function Dogadjaji({ activeSeason }: Props) {
   const hasMore = data?.next != null;
 
   const reserve = async (dogadjaj: any) => {
-    console.log('dogadjaj.company:', JSON.stringify(dogadjaj.company));  // add this
-    setReserving(dogadjaj.id);
-    try {
-      await apiReq.post('/rezervacije/reservations/', {
-      company: dogadjaj.company, 
+  setReserving(dogadjaj.id);
+  try {
+    const companyId = dogadjaj.company?.id ?? dogadjaj.company_id ?? null;
+
+    await apiReq.post('/rezervacije/reservations/', {
+      company: companyId,                                 
       service_name: dogadjaj.naziv,
-      service_type: 'dogadjaj',
+      service_type: 'dogadjaj',                             
+      company_name: dogadjaj.company?.company_name || '',   
       date_from: dogadjaj.datum_pocetka,
-      guests: 1,
+      date_to: null,                                        
+      guests: 1,                                            
       amount: dogadjaj.je_besplatan ? 0 : dogadjaj.cena,
+      notes: '',
       source: 'InfoKOP',
       channel: 'infokop',
       status: 'pending',
     });
-      setSuccess(dogadjaj.id);
-    } catch (err) {
-      console.error(err);
-        console.error('Reserve error:', JSON.stringify(err.response?.data));
-    } finally {
-      setReserving(null);
-    }
-  };
 
+    setSuccess(dogadjaj.id);
+  } catch (err) {
+    console.error('Reservation error:', err);
+    // You may want to show an error alert to the user
+    alert('Došlo je do greške pri rezervaciji. Pokušajte ponovo.');
+  } finally {
+    setReserving(null);
+  }
+};
   const handleLoadMore = () => {
     setPage(prev => prev + 1);
   };
