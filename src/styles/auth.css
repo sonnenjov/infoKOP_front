@@ -1,0 +1,140 @@
+.auth_page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+  background: #f4f6f5;
+}
+
+.auth_box {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth_box .frst {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1f2a24;
+}
+
+.auth_box .frst .material-symbols-outlined {
+  color: #5cb85c;
+}
+
+.auth_subtext {
+  font-size: 0.92rem;
+  color: #5a655f;
+  line-height: 1.4;
+}
+
+.auth_label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #5a655f;
+  text-transform: uppercase;
+}
+
+.auth_label input {
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-transform: none;
+  padding: 10px 12px;
+  border: 1px solid #dfe3e1;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.auth_label input:focus {
+  border-color: #5cb85c;
+}
+
+.password_field {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dfe3e1;
+  border-radius: 8px;
+  padding-right: 10px;
+}
+
+.password_field input {
+  flex: 1;
+  border: none;
+  padding: 10px 12px;
+}
+
+.password_field input:focus {
+  outline: none;
+}
+
+.password_field .login_icon {
+  cursor: pointer;
+  color: #8a948e;
+  font-size: 20px;
+}
+
+.auth_box button[type="submit"] {
+  background: #5cb85c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.auth_box button[type="submit"]:hover {
+  background: #4ea34e;
+}
+
+.auth_box button[type="submit"]:disabled {
+  background: #a9d4a9;
+  cursor: not-allowed;
+}
+
+.auth_error {
+  color: #c0392b;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.auth_success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 12px 0;
+}
+
+.auth_success .success_icon {
+  color: #5cb85c;
+  font-size: 40px;
+}
+
+.auth_link {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #5cb85c;
+  text-decoration: none;
+}
+
+.auth_link:hover {
+  text-decoration: underline;
+}

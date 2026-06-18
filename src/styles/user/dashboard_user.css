@@ -1,0 +1,482 @@
+
+.account-main > main {
+  width: 100%;
+}
+
+.main_user_bar {
+  height: 100vdh;
+  width: 100%;
+  color: white;
+  font-family: Jakarta Bold;
+  padding: 3em;
+  background: radial-gradient(ellipse at 25% 50%, #497a1565 0%, #1e3a084d 45%, #090e04 100%);
+}
+
+.grid_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 2em;
+  grid-template-areas: 
+    "box1 box1 box1"
+    "box2 box2 box3"
+    "box4 box4 box5";
+}
+
+@media screen and (max-width: 1200px) {
+  .grid_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1.5em;
+    grid-template-areas: 
+      "box1 box1"
+      "box2 box3"
+      "box4 box5";
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1.5em;
+    grid-template-areas: 
+      "box1"
+      "box2"
+      "box3"
+      "box4"
+      "box5";
+  }
+  
+  .main_user_bar {
+    padding: 1.5em;
+    padding-top: 4em;
+    height: fit-content;
+  }
+}
+
+.box {
+  border-radius: 20px;
+  background-color: #222222;
+}
+
+/* Welcome Box */
+.welcome_user_div {
+  background-image: url('../../branding/images/649545020_26431358533165322_3304444365875728851_n.jpg');
+  width: 100%;
+  display: flex;
+  border-radius: 20px;
+  min-height: 250px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome_user_inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background-color: #22222296;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.welcome_user_content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 24px;
+}
+
+.welcome_user_content .info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrain Mono', monospace;
+  font-size: 0.9em;
+  gap: 0.5em;
+  color: var(--weather-inactive-summer);
+  background-color: #1f3327a4;
+  padding: 0.5em 1em;
+  border: 1px solid var(--weather-inactive-summer);
+  border-radius: 10px;
+  margin-bottom: 0.5em;
+}
+
+.welcome {
+  font-size: 2em;
+  margin: 0;
+}
+
+/* Active Ski Pass */
+.active_skipass {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  gap: 0.8em;
+  min-height: 200px;
+}
+
+.active_skipass .title {
+  font-family: 'JetBrain Mono', monospace;
+  color: var(--weather-inactive-summer);
+}
+
+.active_skipass h1 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.skipass_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--weather-inactive-summer);
+}
+
+.material-symbols-outlined.ticket {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 2em;
+}
+
+.remainingdays {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0.5em;
+}
+
+.remaining {
+  font-family: 'JakartaReg', sans-serif;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.detalji {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  font-family: 'JakartaReg', sans-serif;
+  font-size: 0.85em;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.detalji:hover {
+  opacity: 1;
+}
+
+/* Inactive Ski Pass */
+.inactive_skipass {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  gap: 0.8em;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  min-height: 200px;
+}
+
+.inactive_skipass .skipass_info {
+  justify-content: center;
+}
+
+.inactive_skipass .material-symbols-outlined.ticket {
+  font-size: 2.5em;
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+.no-skipass-text {
+  font-size: 0.9em;
+  color: #aaa;
+  text-align: center;
+  margin: 0.5em 0;
+  font-family: 'JakartaReg', sans-serif;
+}
+
+.buy-skipass-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-top: 0.5em;
+  padding: 0.6em 1.2em;
+  background-color: var(--weather-inactive-summer);
+  color: white;
+  border: none;
+  border-radius: 0.4em;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-family: 'JakartaSemibold', sans-serif;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
+}
+
+.buy-skipass-btn:hover {
+  opacity: 0.85;
+}
+
+/* Weather Box */
+.weath_acc {
+  padding: 0;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+/* Reservations Box */
+.reservations_user {
+  padding: 1.5em;
+}
+
+.reservations_user .res {
+  font-family: 'JetBrain Mono', monospace;
+  font-size: 0.9em;
+  margin: 0 0 1em 0;
+  color: var(--weather-inactive-summer);
+  text-transform: uppercase;
+}
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.block1 {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  height: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Recent Activities Box */
+.recent-activities {
+  background: #222222;
+  border-radius: 16px;
+  display: flex;
+  padding: 1.5em;
+  flex-direction: column;
+  align-items: start;
+  gap: 1em;
+  min-height: 250px;
+}
+
+.section-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'JetBrain Mono', monospace;
+  color: var(--weather-inactive-summer);
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  width: 100%;
+  flex: 1;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.6em 0.8em;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.activity-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.activity-item-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-icon {
+  font-size: 1.1rem !important;
+  color: var(--weather-inactive-summer);
+  flex-shrink: 0;
+}
+
+.activity-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'JakartaReg', sans-serif;
+}
+
+.activity-time {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: 'JakartaReg', sans-serif;
+}
+
+.activity-badge {
+  font-size: 0.6rem;
+  font-family: 'JakartaSemibold', sans-serif;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.activity-item-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1.5rem 0;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.activity-item-empty .material-symbols-outlined {
+  font-size: 2rem;
+  opacity: 0.3;
+}
+
+.view-all-activities {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  font-family: 'JakartaSemibold', sans-serif;
+  font-size: 0.7rem;
+  color: var(--weather-inactive-summer);
+  cursor: pointer;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.view-all-activities:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0 0 10px 10px;
+}
+
+.view-all-activities .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+/* Scrollbar styling for activity list if needed */
+.activity-list::-webkit-scrollbar {
+  width: 3px;
+}
+
+.activity-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 3px;
+}
+
+.activity-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .welcome {
+    font-size: 1.5em;
+  }
+  
+  .active_skipass h1 {
+    font-size: 1.2em;
+  }
+  
+  .activity-item {
+    padding: 0.5em 0.6em;
+  }
+  
+  .activity-name {
+    font-size: 0.8rem;
+  }
+  
+  .activity-badge {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main_user_bar {
+    padding: 1em;
+    padding-top: 4em;
+  }
+  
+  .grid_container {
+    gap: 1em;
+  }
+  
+  .welcome_user_content {
+    padding: 16px;
+  }
+  
+  .welcome {
+    font-size: 1.2em;
+  }
+  
+  .welcome_user_content .info {
+    font-size: 0.7em;
+  }
+  
+  .active_skipass, .inactive_skipass {
+    padding: 1em;
+    min-height: 150px;
+  }
+  
+  .recent-activities {
+    padding: 1em;
+    min-height: 200px;
+  }
+  
+  .reservations_user {
+    padding: 1em;
+  }
+}

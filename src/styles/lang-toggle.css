@@ -1,0 +1,33 @@
+@import url('./root.css');
+
+.lang-toggle {
+  background-color: transparent ;
+  border: none;
+  padding: 0.5em;
+  display: flex;
+  gap: 1em;
+  color: white;
+}
+
+.lang-toggle-option {
+  width: 100%;
+  height: 100%;
+  font-family: JakartaReg;
+  font-size: large;
+}
+.lang-toggle-divider {
+  height: 100%;
+  position: relative;  
+}
+.lang-toggle.summer .lang-toggle-option--active {
+  color: var(--weather-inactive-summer) ;
+  font-family: Jakarta Bold;
+  font-size: large;
+}
+
+
+.lang-toggle.winter .lang-toggle-option--active {
+  color: var(--weather-inactive-winter) ;
+  font-family: Jakarta Bold;
+  font-size: large;
+}

@@ -1,0 +1,103 @@
+@font-face {
+  font-family: NationalParkRegular; 
+  src: url("../branding/fonts/NationalPark-Regular.ttf"); 
+}
+
+@font-face {
+  font-family: NationalParkLight; 
+  src: url("../branding/fonts/NationalPark-Light.ttf"); 
+}
+
+@font-face {
+  font-family: NationalParkExtraLight; 
+  src: url("../branding/fonts/NationalPark-ExtraLight.ttf"); 
+}
+
+@font-face {
+  font-family: NationalParkMedium; 
+  src: url("../branding/fonts/NationalPark-Medium.ttf"); 
+}
+
+@font-face {
+  font-family: NationalParkSemiBold; 
+  src: url("../branding/fonts/NationalPark-SemiBold.ttf"); 
+}
+
+@font-face {
+  font-family: NationalParkBold; 
+  src: url("../branding/fonts/NationalPark-Bold.ttf"); 
+}
+
+@font-face {
+  font-family: NationalParkExtraBold; 
+  src: url("../branding/fonts/NationalPark-ExtraBold.ttf"); 
+}
+
+@font-face {
+  font-family: JetBrain Mono; 
+  src: url("../branding/fonts/jakarta/JetBrainsMono-VariableFont_wght.ttf"); 
+}
+@font-face {
+  font-family: Jakarta Bold ; 
+  src: url("../branding/fonts/jakarta/PlusJakartaSans-Bold.ttf"); 
+}
+
+@font-face {
+  font-family: JakartaReg ; 
+  src: url("../branding/fonts/jakarta/PlusJakartaSans-Regular.ttf"); 
+}
+main {
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+main {
+  animation: pageFade 0.3s ease;
+}
+
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+ body, html {
+  background-color: #121412;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  max-width:100%;
+} 
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --nav-background-winter: rgba(1, 35, 65, 0.62);
+  --nav-background-summer: rgba(26, 51, 32, 0.62);
+  --weather-inactive-summer: #76b817;
+  --weather-inactive-background-summer: #406900;
+  --weather-inactive-background-winter: #004869;
+  --weather-active-summer: #1a2e22;
+  --weather-inactive-winter: #1a8ef3;
+  --weather-active-winter: #013059;
+  --filter-black-to-green:  invert(71%) sepia(29%) saturate(3656%) hue-rotate(40deg) brightness(94%) contrast(82%);
+  --filter-black-to-blue: invert(49%) sepia(52%) saturate(4859%) hue-rotate(189deg) brightness(99%) contrast(93%);;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #121412 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+}

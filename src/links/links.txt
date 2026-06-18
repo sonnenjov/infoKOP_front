@@ -1,0 +1,1 @@
+/v1/forecast?latitude=43.286&longitude=20.8092&hourly=temperature_2m,relative_humidity_2m,precipitation,rain,snowfall,snow_depth,weather_code,surface_pressure,cloud_cover,visibility,wind_direction_180m,wind_speed_180m,temperature_180m

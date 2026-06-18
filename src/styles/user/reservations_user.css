@@ -1,0 +1,289 @@
+.main_reservations {
+  padding: 3em;
+  gap: 2em;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  "box-1 box-1 box-1"
+  "box-2 box-2 box-2"
+  "box-2 box-2 box-2"
+  "box-2 box-2 box-2"
+  "box-3 box-3 box-3";
+  background: radial-gradient(ellipse at 25% 50%, #497a1565 0%, #1e3a084d 45%, #090e04 100%);
+
+}
+
+.box_reservations {
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-family: Jakarta Bold;
+}
+
+.firstres  {
+
+}
+
+.scndres  h6 {
+  color: var(--weather-inactive-summer);
+  font-family: JetBrain Mono;
+  font-size: 1em;
+  margin: 0;
+}
+
+.thrdres h6 {
+  color: gray;
+   font-family: JetBrain Mono;
+  font-size: 1em;
+  margin: 0;
+}
+.thrdres {
+  display: flex;
+  flex-direction: column;
+}
+.newres {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  background-color: var(--weather-inactive-summer);
+  padding: 2em 6em;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--weather-active-summer);
+}
+
+.newres h1 {
+  font-size: 1.3em;
+  margin: 0;
+  margin-top: 1em;
+}
+.newres span {
+  color: var(--weather-inactive-summer);
+  scale: 2;
+  background-color: var(--weather-active-summer);
+  border-radius: 50%;
+}
+
+.newres p {
+  font-family: JetBrain Mono;
+  text-transform: uppercase;
+}
+.history_activity_user {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 100%;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .main_reservations {
+  padding: 3em;
+  gap: 2em;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 
+  "box-1"
+  "box-2"
+  "box-3";
+  background: radial-gradient(ellipse at 25% 50%, #497a1565 0%, #1e3a084d 45%, #090e04 100%);
+
+}
+
+
+.newres {
+  width: fit-content;
+  padding: 2em 1em;
+}
+}
+
+
+
+
+
+.history_item_user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  gap: 1rem;
+}
+.history_item_user:last-child { border-bottom: none; }
+ 
+.history_item_left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.history_service {
+  font-family: Jakarta Bold;
+  font-size: 0.88rem;
+  color: white;
+}
+.history_company {
+  font-family: JakartaReg;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+}
+.history_date {
+  font-family: JetBrain Mono;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+}
+.history_item_right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.history_amount {
+  font-family: JetBrain Mono;
+  font-size: 0.82rem;
+  color: var(--weather-inactive-summer);
+  font-weight: 700;
+}
+.history_badge {
+  font-family: JetBrain Mono;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+ 
+/* Carousel fixes */
+.carousel-loading,
+.carousel-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  color: rgba(255,255,255,0.3);
+  font-family: JakartaReg;
+  font-size: 0.85rem;
+  text-align: center;
+}
+.carousel-badge {
+  font-family: JetBrain Mono;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.carousel-company {
+  font-family: JakartaReg;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 0.75rem;
+}
+.carousel-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+.carousel-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: JetBrain Mono;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+}
+.carousel-meta-item .material-symbols-outlined { font-size: 0.9rem; color: var(--weather-inactive-summer); }
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.carousel-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.5);
+  border-radius: 6px;
+  padding: 0.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.15s;
+}
+.carousel-btn:hover:not(:disabled) { border-color: var(--weather-inactive-summer); color: var(--weather-inactive-summer); }
+.carousel-btn:disabled { opacity: 0.2; cursor: not-allowed; }
+.carousel-btn .material-symbols-outlined { font-size: 0.9rem; }
+.carousel-counter {
+  font-family: JetBrain Mono;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+}
+ 
+ 
+.res_card_user {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0.75rem;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 0.5rem;
+}
+.res_card_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.res_card_name {
+  font-family: Jakarta Bold;
+  font-size: 0.88rem;
+  color: white;
+}
+.res_card_badge {
+  font-family: JetBrain Mono;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.res_card_company {
+  font-family: JakartaReg;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+}
+.res_card_meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: JetBrain Mono;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+}
+ 
+.activity_row_user {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 0.8fr 1fr;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-family: JakartaReg;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+}
+.activity_row_user p { margin: 0; }
+.activity_row_user:last-child { border-bottom: none; }

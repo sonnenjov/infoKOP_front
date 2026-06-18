@@ -1,0 +1,286 @@
+.usluge_partner {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  background-color: #121412;
+}
+.inner_grid_usluge {
+  width: 100%;
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: repeat(1,auto);
+  grid-template-rows: repeat(5,auto);
+  grid-template-areas:
+  "u1"
+  "u2"
+  "u2"
+  "u2"
+  "u2";
+  padding: 2em;
+  gap: 1em;
+}
+
+
+.uslugebox1 {
+  margin: 0;
+  padding: 0;
+  background-image: url('../../branding/images/649545020_26431358533165322_3304444365875728851_n.jpg');
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative; 
+  overflow: auto;
+}
+.uslugebox1_layout {
+  position: absolute;
+  background-color: #22222293;
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  backdrop-filter: blur(2px);
+}
+.uslugebox1_content {
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  align-items: start;
+  justify-content: end;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  color: white;
+  font-family: Jakarta Bold;
+  margin: 0;
+}
+.uslugebox1_content .highlight {
+  background-color: var(--weather-inactive-summer);
+  padding: 0.3em 0.5em;
+  border-radius: 10px;
+  color: var(--weather-active-summer);
+  margin: 0;
+}
+
+.uslugebox1_content h1 {
+  margin: 0;
+}
+
+.uslugebox1_content .infoservice {
+  margin: 1em 0;
+  color: rgba(255, 255, 255, 0.712);
+}
+.uslugebox2 {
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: fit-content;
+  overflow: hidden;
+  gap: 1em;
+}
+.component {
+  background-color: #222222;
+  padding: 1em;
+ width: calc(50% - 0.5em);
+    min-height: 180px;         
+  max-height: 250px;          
+  overflow-y: auto; 
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  box-sizing: border-box; 
+}
+.component .gornji {
+  display: flex;
+  width: 100%;
+  padding: 1em;
+}
+.component .gornji .gornji_left {
+  display: flex;
+  align-items: center;
+  gap: 1.4em;
+  width: 90%;
+}
+.component .gornji .gornji_left span {
+  background-color: var(--weather-active-summer);
+  color: var(--weather-inactive-summer);
+  padding: 0.3em;
+  scale: 1.7;
+}
+
+.component .gornji .gornji_left .text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+}
+.component .gornji .gornji_left .text h5  {
+  margin: 0;
+  font-size: 1.1em;
+  color: white;
+  font-family: Jakarta Bold;
+}
+.component .gornji .gornji_left .text p  {
+  margin: 0.4em 0;
+  color: gray;
+  font-family: JetBrain Mono;
+  font-size: 0.7em;
+}
+.component .gornji .gornji_right {
+  display: flex;
+  width: 10%;
+}
+.component_separator {
+  width: 90%;
+  color: #55555585;
+}
+
+.component .donji {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-family: JetBrain Mono;
+
+}
+.component .donji .donji_right {
+  display: flex;
+  gap: 0.5em;
+}
+
+.component {
+  border: 1px solid gray;
+  transition: 300ms;
+
+}
+.component:hover {
+  border: 1px solid var(--weather-inactive-summer);
+  transition: 300ms;
+}
+
+.add_component {
+  background-color: #222222;
+  padding: 1em;
+ width: calc(50% - 0.5em); 
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;         
+  max-height: 250px;          
+  overflow-y: auto; 
+  color: white;
+  font-family: Jakarta bold;
+  gap: 1em;
+  font-size: 1.4em;
+  cursor: pointer;
+  border: 2px dashed gray;
+  transition: 200ms;
+
+}
+.add_component span {
+  border: 1px solid white;
+  border-radius: 50%;
+  padding: 0.4em;  
+  transition: 200ms;
+
+}
+.add_component:hover {
+  background-color: #222222;
+  padding: 1em;
+ width: calc(50% - 0.5em); 
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;         
+  max-height: 250px;          
+  overflow-y: auto; 
+  color: var(--weather-inactive-summer);
+  font-family: Jakarta bold;
+  gap: 1em;
+  font-size: 1.4em;
+  cursor: pointer;
+  border: 2px dashed var(--weather-inactive-summer);
+  transition: 200ms;
+
+}
+.add_component:hover span {
+  border: 1px solid var(--weather-inactive-summer);
+  border-radius: 50%;
+  padding: 0.4em;
+  color: var(--weather-inactive-summer);
+  transition: 200ms;
+}
+
+
+@media (max-width: 768px) {
+
+.inner_grid_usluge { 
+  padding-bottom: 5em;
+  padding-top: 5em;
+  height: fit-content;
+}
+
+.uslugebox2 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  padding: 1em;
+  flex-direction: column;
+  gap: 1em;
+}
+.component {
+  background-color: #222222;
+  padding: 1em;
+ width: calc(100% - 0.5em);
+    min-height: 180px;         
+  max-height: 250px;          
+  overflow-y: auto; 
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  box-sizing: border-box; 
+}
+
+
+.add_component {
+  background-color: #222222;
+  padding: 1em;
+  width: calc(100% - 0.5em); 
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;         
+  max-height: 250px;          
+  overflow-y: auto; 
+}
+.add_component:hover {
+  width: calc(100% - 0.5em); 
+}
+.component .gornji .gornji_left .text h5  {
+  margin: 0;
+  font-size: 0.9em;
+  color: white;
+  font-family: Jakarta Bold;
+}
+.component .gornji .gornji_left .text p  {
+  margin: 0.4em 0;
+  color: gray;
+  font-family: JetBrain Mono;
+  font-size: 0.5em;
+}
+
+}

@@ -1,0 +1,51 @@
+.weather_block {
+  background-color: var(--weather-inactive-summer);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  height: 100%;
+  border-radius: 15px;
+  color: var(--weather-active-summer);
+}
+.first_weatherblock {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.first_weatherblock .weather_icon {
+  filter: invert();
+}
+.second_weatherblock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  height: fit-content;
+}
+.temp {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  height: fit-content;
+  font-size: 3em;
+}
+
+.third_weatherblock {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1em;
+  color: var(--weather-active-summer);
+}
+.razdvajanje {
+  width: 100%;
+  height: 1px;
+  color: var(--weather-active-summer);
+  opacity: 0.2;
+  border-radius: 10px;
+}

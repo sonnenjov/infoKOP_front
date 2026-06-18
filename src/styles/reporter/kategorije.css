@@ -1,0 +1,183 @@
+.rk-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #121412;
+  color: #fff;
+  font-family: "JakartaReg", sans-serif;
+  padding: 2.5em 3em 4em;
+}
+
+.rk-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2em;
+  margin-bottom: 2.5em;
+}
+
+.rk-stat {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1.4em 1.6em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.rk-stat__icon {
+  color: var(--weather-inactive-summer);
+  font-size: 2em;
+}
+
+.rk-stat__label {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.65em;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 0.3em;
+}
+
+.rk-stat__value {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 2em;
+  margin: 0;
+  line-height: 1;
+}
+
+.rk-section {
+  margin-bottom: 3em;
+}
+
+.rk-section__title {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 1.4em;
+  margin: 0 0 0.3em;
+}
+
+.rk-section__sub {
+  font-size: 0.85em;
+  color: rgba(255,255,255,0.4);
+  margin: 0 0 1.5em;
+}
+
+.rk-themes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2em;
+}
+
+.rk-theme-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1.5em;
+  transition: border-color 0.2s;
+}
+
+.rk-theme-card:hover {
+  border-color: rgba(118,184,23,0.3);
+}
+
+.rk-theme-card__icon {
+  color: var(--weather-inactive-summer);
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  display: block;
+}
+
+.rk-theme-card__name {
+  font-family: "NationalParkSemiBold", sans-serif;
+  font-size: 1em;
+  margin: 0 0 0.8em;
+}
+
+.rk-theme-card__count {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.65em;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.rk-theme-card__count span {
+  color: var(--weather-inactive-summer);
+  font-size: 1.3em;
+}
+
+.rk-tag-input {
+  display: flex;
+  gap: 0.8em;
+  margin-bottom: 1.2em;
+}
+
+.rk-tag-input input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-family: "JakartaReg", sans-serif;
+  font-size: 0.85em;
+  padding: 0.6em 1em;
+  outline: none;
+  width: 260px;
+}
+
+.rk-tag-input button {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  background: var(--weather-inactive-summer);
+  border: none;
+  border-radius: 8px;
+  color: #0d1a0d;
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.78em;
+  font-weight: 700;
+  padding: 0.6em 1.2em;
+  cursor: pointer;
+}
+
+.rk-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+}
+
+.rk-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  background: rgba(118,184,23,0.08);
+  border: 1px solid rgba(118,184,23,0.2);
+  border-radius: 999px;
+  padding: 0.35em 0.8em 0.35em 1em;
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.72em;
+  color: var(--weather-inactive-summer);
+}
+
+.rk-tag button {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.3);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.rk-tag button:hover {
+  color: #e05555;
+}
+
+.rk-tag .material-symbols-outlined {
+  font-size: 0.95em;
+}
+
+@media (max-width: 900px) {
+  .rk-themes { grid-template-columns: repeat(2, 1fr); }
+  .rk-stats { grid-template-columns: 1fr; }
+  .rk-page { padding: 1.5em; }
+}

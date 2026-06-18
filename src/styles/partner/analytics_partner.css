@@ -1,0 +1,517 @@
+
+
+
+.analytics_company {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid_analytics_company {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows:   auto auto auto;
+  grid-template-areas: 
+  "b1"
+  "b2"
+  "b3";
+  width: 100%;
+  height: 100dvh;
+  gap: 1em;
+  padding: 2em;
+
+}
+
+.boxa {
+  border-radius: 20px;
+}
+
+
+.welcome_back {
+  background-image: url('../../branding/images/649545020_26431358533165322_3304444365875728851_n.jpg');
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+}
+
+.welcomeback_layout {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background-color: #22222296;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.partnerdiv  {
+  background-color: var(--weather-inactive-summer);
+  width: fit-content;
+  padding: 0.4em 0.6em;
+  border-radius: 20px;
+  color: var(--weather-active-summer);
+
+}
+.welcome_back_content {
+  z-index: 10000;
+  position: relative;
+  font-family: Jakarta Bold;
+  color: white;
+}
+
+.welcome_back_content h1 {
+  text-transform: capitalize;
+}
+
+
+.statistics {
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 1em;
+}
+.stat {
+  border-radius: 10px;
+  width: 100%;
+  background-color: #121412;
+  height: 100%;
+}
+
+.statistics2 {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  padding: 1em;
+  font-family:  JetBrain Mono;
+  font-weight: 900;
+  color: var(--weather-active-summer);
+  background-color: var(--weather-inactive-summer);
+}
+.statistics2 .gore {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-family: JetBrain Mono;
+  text-transform: uppercase;
+  font-weight: 800;
+  align-items: center;
+
+}
+.statistics2 .gore span {
+  color: var(--weather-inactive-summer);
+  background-color: var(--weather-active-summer);
+  padding: 0.5em;
+  border-radius: 10px;
+  scale: 1.3;
+  margin: 0.5em;
+}
+
+.statistics1 {
+  display: flex;
+  color: var(--weather-inactive-summer);
+  font-family: JetBrain Mono;
+  text-transform: uppercase;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.statistics1 .gore span {
+  color: var(--weather-active-summer);
+  background-color: var(--weather-inactive-summer);
+  padding: 0.5em;
+  border-radius: 10px;
+  scale: 1.3;
+  margin: 0.5em;
+}
+
+.statistics1 .gore {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  font-family: JetBrain Mono;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+.statistics1 .dole p {
+  font-family: Jakarta Bold;
+  font-weight: bolder;
+}
+
+
+.statistics3 {
+  display: flex;
+  color: var(--weather-inactive-summer);
+  font-family: JetBrain Mono;
+  text-transform: uppercase;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.statistics3 .gore span {
+  color: var(--weather-active-summer);
+  background-color: var(--weather-inactive-summer);
+  padding: 0.5em;
+  border-radius: 10px;
+  scale: 1.3;
+  margin: 0.5em;
+}
+
+.statistics3 .gore {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  font-family: JetBrain Mono;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+.statistics3 .dole p {
+  font-family: Jakarta Bold;
+  font-weight: bolder;
+}
+
+
+.graphs {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto;
+  grid-template-areas: "g1 g1 g2 g2";
+  height: 100%;
+  overflow: hidden;
+  gap: 1em;
+}
+.bgraph {
+  border-radius: 20px;
+  background-color: #121412;
+}
+
+.graphdiv1 {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  font-family: JakartaReg;
+
+}
+
+.graphdiv1 .text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  
+
+}
+
+.graphdiv1 .text .leftgraphtext {
+  margin: 0;
+}
+.graphdiv1 .text .leftgraphtext h1 {
+  margin: 0;
+  color: white;
+}
+
+.graphdiv1 .text .leftgraphtext p {
+  margin: 0;
+  color: gainsboro;
+}
+
+.graphdiv1 .text .rightgraphtext {
+  display: flex;
+  gap: 1em;
+}
+
+.graphdiv1 .text .rightgraphtext p.active {
+  margin: 0;
+  background-color: var(--weather-inactive-summer);
+  color: var(--weather-active-summer);
+  padding: 0.4em;
+  border-radius: 20px;
+  font-family: Jakarta Bold;
+}
+
+.graphdiv1 .text .rightgraphtext p {
+  margin: 0;
+  color: white;
+  border: 1px solid white;
+  padding: 0.4em;
+  border-radius: 20px;
+  font-family: Jakarta Bold;
+}
+
+
+.graphdiv2 {
+  padding: 1em;
+}
+.graphdiv2 .g {
+  color: white;
+  font-family: Jakarta Bold;
+} 
+.graphdiv2 .d {
+  background-color: red;
+}
+.names {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: JetBrain Mono;
+  color: white;
+  text-transform: capitalize;
+}
+.graphdiv2 p {
+  color: white;
+  font-family: JakartaReg;
+
+}
+
+@media (max-width: 768px) {
+
+.analytics_company {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4em;
+  padding-top: 4em;
+}
+
+  .statistics {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: auto;
+  width: 100%;
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.grid_analytics_company {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows:   auto auto auto;
+  grid-template-areas: 
+  "b1"
+  "b2"
+  "b3";
+  width: 100%;
+  height: fit-content;
+  gap: 1em;
+  padding: 2em;
+
+}
+.graphs {
+  display: grid;
+  grid-template-columns: auto ;
+  grid-template-rows: auto auto;
+  grid-template-areas: "g1" "g2";
+  height: 100%;
+  overflow: hidden;
+  gap: 1em;
+}
+}
+
+
+
+.ana_trend {
+  font-family: JetBrain Mono;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+}
+.ana_trend_up {
+  background: rgba(118, 184, 23, 0.15);
+  color: var(--weather-inactive-summer);
+}
+.ana_trend_down {
+  background: rgba(248, 113, 113, 0.15);
+  color: #f87171;
+}
+.ana_trend_inv {
+  font-family: JetBrain Mono;
+  font-size: 0.7rem;
+  color: var(--weather-active-summer);
+  opacity: 0.7;
+}
+
+.ana_chart_wrap {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.ana_tooltip {
+  background: #1a2a1a;
+  border: 1px solid var(--weather-inactive-summer);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-family: JetBrain Mono;
+}
+.ana_tooltip_label {
+  font-size: 0.7rem;
+  color: var(--weather-inactive-summer);
+  margin: 0 0 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.ana_tooltip_val {
+  font-size: 0.95rem;
+  color: white;
+  font-weight: 700;
+  margin: 0 0 0.1rem;
+}
+.ana_tooltip_sub {
+  font-size: 0.72rem;
+  color: #60a5fa;
+  margin: 0;
+}
+
+.ana_channels {
+  margin-bottom: 0.5rem;
+}
+.ana_section_label {
+  font-family: JetBrain Mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--weather-inactive-summer) !important;
+  margin: 0 0 0.6rem !important;
+  text-transform: uppercase;
+}
+.ana_channel_bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.ana_channel_row {
+  display: grid;
+  grid-template-columns: 90px 1fr 36px;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ana_channel_name {
+  font-family: JetBrain Mono;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.6);
+  white-space: nowrap;
+}
+.ana_channel_track {
+  height: 5px;
+  background: #1e2a1e;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.ana_channel_fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+.ana_channel_pct {
+  font-family: JetBrain Mono;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.45);
+  text-align: right;
+}
+
+/* Bookings list */
+.ana_bookings_list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0.4rem 0;
+}
+.ana_booking_row {
+  display: grid;
+  grid-template-columns: 1.4fr 1.2fr 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid #1a2a1a;
+}
+.ana_booking_row:last-child {
+  border-bottom: none;
+}
+.ana_booking_guest {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.ana_booking_name {
+  font-family: Jakarta Bold;
+  font-size: 0.82rem;
+  color: white;
+}
+.ana_booking_id {
+  font-family: JetBrain Mono;
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.3);
+}
+.ana_booking_service {
+  font-family: JakartaReg;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ana_booking_amount {
+  font-family: JetBrain Mono;
+  font-size: 0.78rem;
+  color: var(--weather-inactive-summer);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ana_badge {
+  font-family: JetBrain Mono;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.ana_status_confirmed { background: rgba(118,184,23,0.15); color: var(--weather-inactive-summer); }
+.ana_status_pending   { background: rgba(250,204,21,0.15); color: #facc15; }
+.ana_status_cancelled { background: rgba(248,113,113,0.15); color: #f87171; }
+
+.ana_view_all {
+  font-family: Jakarta Bold;
+  font-size: 0.8rem;
+  color: var(--weather-inactive-summer) !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.ana_view_all:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .ana_booking_row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+  .ana_booking_service { display: none; }
+  .ana_channel_row { grid-template-columns: 70px 1fr 30px; }
+}

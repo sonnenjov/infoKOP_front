@@ -1,0 +1,314 @@
+/* ── REPORTER DASHBOARD ─────────────────────────────────── */
+.rd-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #121412;
+  color: #fff;
+  font-family: "JakartaReg", sans-serif;
+  padding: 2.5em 3em 4em;
+}
+
+/* ── TOPBAR ─────────────────────────────────────────────── */
+.rd-topbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.5em;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.rd-topbar__greeting {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.72em;
+  letter-spacing: 0.15em;
+  color: var(--weather-inactive-summer);
+  margin: 0 0 0.3em;
+}
+
+.rd-topbar__title {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 2.5em;
+  margin: 0;
+  line-height: 1;
+}
+
+.rd-topbar__actions {
+  display: flex;
+  gap: 0.8em;
+  align-items: center;
+}
+
+/* ── BUTTONS ────────────────────────────────────────────── */
+.rd-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  border-radius: 8px;
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+  padding: 0.65em 1.3em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rd-btn .material-symbols-outlined {
+  font-size: 1.1em;
+}
+
+.rd-btn--outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.rd-btn--outline:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+.rd-btn--primary {
+  background: var(--weather-inactive-summer);
+  border: none;
+  color: #0d1a0d;
+  font-weight: 700;
+}
+
+.rd-btn--primary:hover {
+  opacity: 0.88;
+}
+
+/* ── STATS ──────────────────────────────────────────────── */
+.rd-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2em;
+  margin-bottom: 2.5em;
+  max-width: 600px;
+}
+
+.rd-stat {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 1.4em 1.6em;
+}
+
+.rd-stat__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8em;
+}
+
+.rd-stat__icon {
+  color: var(--weather-inactive-summer);
+  font-size: 1.4em;
+}
+
+.rd-stat__label {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.06em;
+}
+
+.rd-stat__label--green {
+  color: var(--weather-inactive-summer);
+}
+
+.rd-stat__value {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 2.4em;
+  margin: 0 0 0.1em;
+  line-height: 1;
+}
+
+.rd-stat__desc {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.05em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── DRAFTS ─────────────────────────────────────────────── */
+.rd-drafts {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 1.8em;
+  max-width: 700px;
+}
+
+.rd-drafts__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4em;
+}
+
+.rd-drafts__title {
+  font-family: "NationalParkSemiBold", sans-serif;
+  font-size: 1em;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rd-drafts__link {
+  background: none;
+  border: none;
+  color: var(--weather-inactive-summer);
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.72em;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}
+
+.rd-drafts__link:hover {
+  opacity: 0.75;
+}
+
+.rd-drafts__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── DRAFT ITEM ─────────────────────────────────────────── */
+.rd-draft-item {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background 0.15s;
+  border-radius: 8px;
+}
+
+.rd-draft-item:last-child {
+  border-bottom: none;
+}
+
+.rd-draft-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  padding-left: 0.5em;
+}
+
+.rd-draft-item__img {
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.rd-draft-item__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.rd-draft-item__theme {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.6em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--weather-inactive-summer);
+  background: rgba(118, 184, 23, 0.1);
+  border: 1px solid rgba(118, 184, 23, 0.2);
+  border-radius: 3px;
+  padding: 0.15em 0.5em;
+}
+
+.rd-draft-item__title {
+  font-family: "NationalParkSemiBold", sans-serif;
+  font-size: 0.9em;
+  margin: 0.4em 0 0.25em;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rd-draft-item__excerpt {
+  font-size: 0.75em;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rd-draft-item__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.rd-draft-item__time {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.5;
+}
+
+.rd-draft-item__time strong {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.rd-draft-item__arrow {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.2em;
+}
+
+/* ── LOADING / EMPTY ────────────────────────────────────── */
+.rd-loading {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+}
+
+.rd-loading__spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-top-color: var(--weather-inactive-summer);
+  border-radius: 50%;
+  animation: rd-spin 0.8s linear infinite;
+}
+
+.rd-empty {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+  padding: 2em;
+}
+
+@keyframes rd-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .rd-page {
+    padding: 1.5em;
+  }
+  .rd-topbar__title {
+    font-size: 1.8em;
+  }
+  .rd-stats {
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+  }
+  .rd-drafts {
+    max-width: 100%;
+  }
+}

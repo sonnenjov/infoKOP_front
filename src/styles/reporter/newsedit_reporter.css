@@ -1,0 +1,612 @@
+.vest-editor {
+  width: 100%;
+  min-height: 100dvh;
+  background-color: #0d0f0d;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-family: JakartaReg, sans-serif;
+}
+
+.vest-editor__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.6em;
+  height: 52px;
+  background-color: #121412;
+  border-bottom: 1px solid #1e221e;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.vest-editor__topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+}
+
+.vest-editor__page-title {
+  font-family: "Jakarta Bold", sans-serif;
+  font-size: 1em;
+  margin: 0;
+  color: white;
+}
+
+.vest-editor__status-badge {
+  padding: 0.2em 0.65em;
+  border-radius: 20px;
+  font-size: 0.68em;
+  font-family: "JetBrain Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.vest-editor__status-badge--nacrt {
+  background-color: #2a2a1a;
+  color: #c9a227;
+  border: 1px solid #5a4a1a;
+}
+
+.vest-editor__status-badge--objavljeno {
+  background-color: #1a3a1a;
+  color: #7ebf3f;
+  border: 1px solid #3a6a3a;
+}
+
+.vest-editor__status-badge--zakazano {
+  background-color: #1a2a3a;
+  color: #5a9abf;
+  border: 1px solid #2a4a6a;
+}
+
+.vest-editor__topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.vest-editor__autosave {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.7em;
+  color: #4a5c4a;
+  font-family: "JetBrain Mono", monospace;
+}
+
+.vest-editor__autosave-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #4a8a4a;
+  transition: background-color 0.2s;
+}
+
+.vest-editor__autosave-dot--saving {
+  background-color: #c9a227;
+}
+
+.vest-editor__btn-discard {
+  padding: 0.45em 1em;
+  background: transparent;
+  border: 1px solid #2a352a;
+  border-radius: 8px;
+  color: #6b7c6b;
+  font-family: "Jakarta Bold", sans-serif;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vest-editor__btn-delete {
+  padding: 0.45em 1em;
+  background: transparent;
+  border: 1px solid #943636;
+  border-radius: 8px;
+  color: #9e2f2fc5;
+  font-family: "Jakarta Bold", sans-serif;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vest-editor__btn-discard:hover {
+  border-color: #4a5c4a;
+  color: #aabcaa;
+}
+
+.vest-editor__btn-save {
+  padding: 0.45em 1.2em;
+  background-color: #7ebf3f;
+  border: none;
+  border-radius: 8px;
+  color: #0d0f0d;
+  font-family: "Jakarta Bold", sans-serif;
+  font-size: 0.8em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  transition: all 0.2s;
+}
+
+.vest-editor__btn-save:hover {
+  background-color: #8edf4f;
+  transform: translateY(-1px);
+}
+
+.vest-editor__btn-publish {
+  padding: 0.45em 1.2em;
+  background-color: #5a9a2a;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: "Jakarta Bold", sans-serif;
+  font-size: 0.8em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  transition: all 0.2s;
+}
+
+.vest-editor__btn-publish:hover {
+  background-color: #6aba3a;
+  transform: translateY(-1px);
+}
+
+.vest-editor__body {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5em;
+  padding: 1.6em 2em;
+  flex: 1;
+}
+
+.vest-editor__main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+.vest-editor__cover {
+  width: 100%;
+  height: 240px;
+  border-radius: 14px;
+  border: 2px dashed #2a352a;
+  background-color: #121412;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vest-editor__cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vest-editor__cover-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  color: #3a4a3a;
+}
+
+.vest-editor__cover-placeholder span {
+  font-size: 2.5em;
+  color: #3a5a3a;
+}
+
+.vest-editor__cover-placeholder p {
+  margin: 0;
+}
+
+.vest-editor__cover-btn {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  padding: 0.4em 1em;
+  background-color: #7ebf3f;
+  border: none;
+  border-radius: 8px;
+  color: #0d0f0d;
+  font-family: "Jakarta Bold", sans-serif;
+  font-size: 0.75em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  transition: all 0.2s;
+}
+
+.vest-editor__cover-btn:hover {
+  background-color: #8edf4f;
+  transform: translateY(-1px);
+}
+
+.vest-editor__title-input {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #1e221e;
+  color: white;
+  font-family: "Jakarta Bold", sans-serif;
+  font-size: 1.8em;
+  padding: 0.3em 0;
+  outline: none;
+  caret-color: #7ebf3f;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.vest-editor__title-input:focus {
+  border-bottom-color: #7ebf3f;
+}
+
+.vest-editor__title-input::placeholder {
+  color: #2a3a2a;
+}
+
+.vest-editor__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: 0.5em 0.8em;
+  background-color: #121412;
+  border-radius: 10px;
+  border: 1px solid #1e221e;
+  flex-wrap: wrap;
+}
+
+.vest-editor__tool-btn {
+  background: none;
+  border: none;
+  color: #6b7c6b;
+  cursor: pointer;
+  padding: 0.35em 0.5em;
+  border-radius: 6px;
+  font-size: 0.88em;
+  font-family: "Jakarta Bold", sans-serif;
+  display: flex;
+  align-items: center;
+  transition: all 0.1s;
+  line-height: 1;
+}
+
+.vest-editor__tool-btn:hover {
+  color: #aabcaa;
+  background-color: #1a221a;
+}
+
+.vest-editor__tool-btn--active {
+  color: #7ebf3f;
+  background-color: #1a3a1a;
+}
+
+.vest-editor__tool-btn .material-symbols-outlined {
+  font-size: 1.1em;
+}
+
+.vest-editor__word-count {
+  margin-left: auto;
+  font-size: 0.7em;
+  color: #4a5c4a;
+  font-family: "JetBrain Mono", monospace;
+}
+
+.vest-editor__content {
+  min-height: 400px;
+  background-color: #121412;
+  border-radius: 14px;
+  border: 1px solid #1e221e;
+  padding: 1.4em 1.6em;
+  color: #d4ddd4;
+  font-size: 0.95em;
+  line-height: 1.75;
+}
+
+.ProseMirror {
+  outline: none;
+  min-height: 350px;
+}
+
+.ProseMirror p {
+  margin: 0 0 0.9em;
+}
+
+.ProseMirror h2 {
+  color: white;
+  font-family: "Jakarta Bold", sans-serif;
+  margin: 1.2em 0 0.4em;
+  font-size: 1.25em;
+}
+
+.ProseMirror h3 {
+  color: #aabcaa;
+  font-family: "Jakarta Bold", sans-serif;
+  margin: 1em 0 0.3em;
+  font-size: 1.05em;
+}
+
+.ProseMirror blockquote {
+  border-left: 3px solid #7ebf3f;
+  margin: 0.8em 0;
+  padding: 0.5em 1em;
+  color: #7a9c7a;
+  background: #0d0f0d;
+  border-radius: 0 8px 8px 0;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  padding-left: 1.4em;
+  margin: 0 0 0.9em;
+}
+
+.ProseMirror a {
+  color: #7ebf3f;
+  text-decoration: underline;
+}
+
+.ProseMirror strong {
+  color: white;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #2a3a2a;
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
+
+.vest-editor__seo {
+  background-color: #121412;
+  border: 1px solid #1e221e;
+  border-radius: 14px;
+  padding: 1.2em;
+}
+
+.vest-editor__seo h3 {
+  font-size: 0.85em;
+  font-family: "Jakarta Bold", sans-serif;
+  margin: 0 0 1em 0;
+  color: #aabcaa;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.vest-editor__seo label {
+  display: block;
+  font-size: 0.7em;
+  font-family: "JetBrain Mono", monospace;
+  color: #4a5c4a;
+  margin-bottom: 0.3em;
+}
+
+.vest-editor__seo input,
+.vest-editor__seo textarea {
+  width: 100%;
+  background-color: #0d0f0d;
+  border: 1px solid #1e221e;
+  border-radius: 8px;
+  color: #aabcaa;
+  padding: 0.5em 0.7em;
+  font-family: JakartaReg, sans-serif;
+  font-size: 0.8em;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+}
+
+.vest-editor__seo input:focus,
+.vest-editor__seo textarea:focus {
+  border-color: #7ebf3f;
+}
+
+.vest-editor__seo textarea {
+  resize: vertical;
+}
+
+.vest-editor__meta {
+  background-color: #121412;
+  border: 1px solid #1e221e;
+  border-radius: 14px;
+  padding: 1.2em;
+}
+
+.vest-editor__meta h3 {
+  font-size: 0.85em;
+  font-family: "Jakarta Bold", sans-serif;
+  margin: 0 0 1em 0;
+  color: #aabcaa;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.vest-editor__meta > div {
+  font-size: 0.85em;
+  color: #aabcaa;
+  margin-bottom: 0.5em;
+}
+
+.vest-editor__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.vest-editor__field {
+  background-color: #121412;
+  border: 1px solid #1e221e;
+  border-radius: 14px;
+  padding: 1.2em;
+}
+
+.vest-editor__field label {
+  display: block;
+  font-size: 0.7em;
+  font-family: "JetBrain Mono", monospace;
+  color: #4a5c4a;
+  margin-bottom: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.vest-editor__field select {
+  width: 100%;
+  background-color: #0d0f0d;
+  border: 1px solid #1e221e;
+  border-radius: 8px;
+  color: #aabcaa;
+  padding: 0.5em 0.7em;
+  font-family: JakartaReg, sans-serif;
+  font-size: 0.83em;
+  outline: none;
+  cursor: pointer;
+}
+
+.vest-editor__field select:hover {
+  border-color: #3a4a3a;
+}
+
+.vest-editor__field--checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vest-editor__field--checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0;
+  cursor: pointer;
+}
+
+.vest-editor__field--checkbox input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #7ebf3f;
+}
+
+.vest-editor__hint {
+  font-size: 0.7em;
+  color: #4a5c4a;
+}
+
+.vest-editor__tag-input {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 0.8em;
+}
+
+.vest-editor__tag-input input {
+  flex: 1;
+  background-color: #0d0f0d;
+  border: 1px solid #1e221e;
+  border-radius: 8px;
+  color: #aabcaa;
+  padding: 0.5em 0.7em;
+  font-family: JakartaReg, sans-serif;
+  font-size: 0.8em;
+  outline: none;
+}
+
+.vest-editor__tag-input input:focus {
+  border-color: #7ebf3f;
+}
+
+.vest-editor__tag-input button {
+  padding: 0.4em 1em;
+  background-color: #1a3a1a;
+  border: 1px solid #3a5a3a;
+  border-radius: 8px;
+  color: #7ebf3f;
+  font-family: "Jakarta Bold", sans-serif;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vest-editor__tag-input button:hover {
+  background-color: #2a4a2a;
+}
+
+.vest-editor__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.vest-editor__tag-pill {
+  display: inline-block;
+  padding: 0.3em 0.8em;
+  background-color: #1a221a;
+  border: 1px solid #2a352a;
+  border-radius: 20px;
+  font-size: 0.74em;
+  color: #6b7c6b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vest-editor__tag-pill:hover {
+  background-color: #2a352a;
+  color: #aabcaa;
+}
+
+.vest-editor__tag-pill--active {
+  background-color: #1a3a1a;
+  border-color: #7ebf3f;
+  color: #7ebf3f;
+}
+
+.vest-editor-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  background-color: #0d0f0d;
+  color: #aabcaa;
+  font-family: "Jakarta Bold", sans-serif;
+  font-size: 1em;
+}
+
+@media (max-width: 768px) {
+  .vest-editor__body {
+    grid-template-columns: 1fr;
+    padding: 1em;
+    gap: 1em;
+  }
+
+  .vest-editor__topbar {
+    padding: 0 1em;
+  }
+
+  .vest-editor__btn-discard {
+    display: none;
+  }
+
+  .vest-editor__title-input {
+    font-size: 1.4em;
+  }
+
+  .vest-editor__cover {
+    height: 180px;
+  }
+
+  .vest-editor__sidebar {
+    order: -1;
+  }
+}

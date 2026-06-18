@@ -1,0 +1,33 @@
+.check-email-page {
+  width: 100%;
+  height: 100dvh;
+  background: radial-gradient(ellipse at 25% 50%, #497a1565 0%, #1e3a084d 45%, #090e04 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+.check-email-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #222222;
+  padding: 1em;
+  border-radius: 20px;
+  border: 1px solid var(--weather-inactive-summer);
+  color: white;
+  font-family: Jakarta Bold;
+  gap: 1em;
+}
+.check-email-card span {
+  color: var(--weather-inactive-summer);
+  scale: 2;
+  margin: 1em;
+}
+
+.check-email-card button {background-color: var(--weather-inactive-summer);
+border: none;
+padding: 1em;
+border-radius: 10px;
+font-family: JetBrain Mono;
+}

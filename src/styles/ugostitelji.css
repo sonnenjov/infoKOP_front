@@ -1,0 +1,616 @@
+@import url(./root.css);
+
+* {
+  box-sizing: border-box;
+}
+
+/* Hero Section */
+.ugostitelji_winter {
+  width: 100%;
+  height: 60vh;
+  min-height: 380px;
+  background-image: url('../assets/o_kopaoniku/zima-ugostitelji.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.ugostitelji_summer {
+  width: 100%;
+  height: 60vh;
+  min-height: 380px;
+  background-image: url('../assets/o_kopaoniku/leto-ugostitelji.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.header_ugostitelji {
+  width: 60%;
+  max-width: 800px;
+  position: relative;
+  font-family: 'JetBrains Mono', monospace;
+  color: white;
+  padding: 3em;
+  bottom: 0;
+  z-index: 1;
+}
+
+.header_ugostitelji h1 {
+  font-size: 2.5rem;
+  width: 100%;
+  margin: 0.2em 0;
+}
+
+.block_summer .header_ugostitelji .podnaslov {
+  font-size: 1em;
+  width: 100%;
+  color: var(--weather-inactive-summer);
+}
+
+.block_winter .header_ugostitelji .podnaslov {
+  font-size: 1em;
+  width: 100%;
+  color: var(--weather-inactive-winter);
+}
+
+.header_ugostitelji p {
+  width: 100%;
+  font-size: 1em;
+  opacity: 0.8;
+}
+
+.gradient_ugostitelji {
+  width: 100%;
+  height: 50vh;
+  background: linear-gradient(
+    0deg,
+    rgba(18, 20, 18, 1) 0%,
+    rgba(18, 20, 18, 0.88) 20%,
+    rgba(18, 20, 18, 0.68) 42%,
+    rgba(18, 20, 18, 0.38) 68%,
+    rgba(18, 20, 18, 0.12) 86%,
+    rgba(18, 20, 18, 0) 100%
+  );
+  position: absolute;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* Filters - Dark Theme */
+.filteri {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5em 2em;
+  border-top: 1px solid #2a2a2a;
+  border-bottom: 1px solid #2a2a2a;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+  gap: 1em;
+  background: #0d0d0d;
+}
+
+@media (max-width: 768px) {
+  .filteri {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1em;
+  }
+}
+
+.filteri_opcije {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.filteri_opcije p {
+  color: #a0a0a0;
+  background-color: #1a1a1a;
+  padding: 0.5em 1.2em;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  margin: 0;
+  border: 1px solid transparent;
+  letter-spacing: 0.5px;
+}
+
+.filteri_opcije p:hover {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.filteri_opcije p.active {
+  color: #ffffff;
+  background-color: var(--weather-inactive-summer);
+  border-color: var(--weather-inactive-summer);
+  box-shadow: 0 0 20px rgba(118, 184, 23, 0.2);
+}
+
+/* Search */
+.pretrazi {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+  position: relative;
+}
+
+.search_wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search_input {
+  width: 100%;
+  padding: 0.6em 1em;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 50px;
+  color: #ffffff;
+  font-family: 'JakartaReg', sans-serif;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search_input::placeholder {
+  color: #666;
+}
+
+.search_input:focus {
+  border-color: var(--weather-inactive-summer);
+  box-shadow: 0 0 20px rgba(118, 184, 23, 0.1);
+  background: #1a1a1a;
+}
+
+.suggestions_dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.suggestions_dropdown li {
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #2a2a2a;
+  color: #e0e0e0;
+  transition: all 0.2s;
+}
+
+.suggestions_dropdown li:hover {
+  background: #2a2a2a;
+}
+
+.suggestion_name {
+  font-weight: 500;
+}
+
+.suggestion_category {
+  font-size: 0.7rem;
+  color: #a0a0a0;
+  background: #2a2a2a;
+  padding: 2px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+/* Grid */
+.grid_ugostitelji {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2em 3em;
+}
+
+/* Ugostitelji List */
+.ugostitelji_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5em;
+  margin-top: 2em;
+}
+
+/* Company Card - Dark Theme */
+.company_card {
+  background: #141414;
+  border-radius: 16px;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  border: 1px solid #2a2a2a;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.company_card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--weather-inactive-summer);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.company_card:hover {
+  border-color: var(--weather-inactive-summer);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.company_card:hover::before {
+  opacity: 1;
+}
+
+.company_card_top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.company_card_top span.material-symbols-outlined {
+  color: var(--weather-inactive-summer);
+  font-size: 22px;
+}
+
+.company_category {
+  font-family: 'JakartaReg', sans-serif;
+  font-size: 0.65rem;
+  color: var(--weather-inactive-summer);
+  background-color: rgba(118, 184, 23, 0.12);
+  border: 1px solid rgba(118, 184, 23, 0.2);
+  padding: 3px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.featured_badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6rem;
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  padding: 2px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.featured_badge .material-symbols-outlined {
+  font-size: 14px;
+  color: #ffd700;
+}
+
+.company_card h3 {
+  font-size: 1.05rem;
+  font-family: 'Jakarta Bold', sans-serif;
+  font-weight: 600;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.company_address,
+.company_phone {
+  font-family: 'JakartaReg', sans-serif;
+  font-size: 0.8rem;
+  color: #888;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.company_address .material-symbols-outlined,
+.company_phone .material-symbols-outlined {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Preporuka Section - Dark Theme */
+.preporuka {
+  width: 100%;
+  height: 50vh;
+  min-height: 350px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 1.5em;
+  margin-bottom: 2em;
+  background: #141414;
+  border: 1px solid #2a2a2a;
+}
+
+.texts {
+  width: 50%;
+  height: 100%;
+  padding: 2.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  background: linear-gradient(135deg, #141414 0%, #0d0d0d 100%);
+}
+
+.preporuka img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+.preporuka_badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.preporuka_badge .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.category_tag {
+  display: inline-block;
+  background: rgba(118, 184, 23, 0.15);
+  color: var(--weather-inactive-summer);
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  width: fit-content;
+  border: 1px solid rgba(118, 184, 23, 0.2);
+}
+
+.preporuka_desc {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.preporuka_text {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.texts h1 {
+  font-size: 2rem;
+  margin: 0.2em 0;
+  color: #ffffff;
+  font-family: 'Jakarta Bold', sans-serif;
+}
+
+/* Buttons - Dark Theme */
+.buttons {
+  display: flex;
+  gap: 1em;
+  margin-top: 1em;
+  flex-wrap: wrap;
+}
+
+.btn_reserve {
+  background: var(--weather-inactive-summer);
+  color: #0d0d0d;
+  border: none;
+  padding: 0.7em 2em;
+  border-radius: 50px;
+  font-weight: 600;
+  font-family: 'Jakarta Bold', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn_reserve:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(118, 184, 23, 0.3);
+}
+
+.btn_more {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #444;
+  padding: 0.7em 2em;
+  border-radius: 50px;
+  font-weight: 500;
+  font-family: 'JakartaReg', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.btn_more:hover {
+  background: #2a2a2a;
+  border-color: #666;
+  transform: translateY(-2px);
+}
+
+.btn_reserve_small {
+  background: var(--weather-inactive-summer);
+  color: #0d0d0d;
+  border: none;
+  padding: 0.5em 1.5em;
+  border-radius: 50px;
+  font-weight: 600;
+  font-family: 'Jakarta Bold', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+  margin-top: 0.5em;
+}
+
+.btn_reserve_small:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(118, 184, 23, 0.3);
+}
+
+/* States */
+.loading_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4em 2em;
+  color: #aaa;
+  gap: 1em;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #2a2a2a;
+  border-top: 3px solid var(--weather-inactive-summer);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4em 2em;
+  color: #ff6b6b;
+  gap: 1em;
+}
+
+.error_container .material-symbols-outlined {
+  font-size: 48px;
+}
+
+.error_container button {
+  background: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #444;
+  padding: 0.6em 2em;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.error_container button:hover {
+  background: #3a3a3a;
+}
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4em 2em;
+  color: #888;
+  gap: 0.5em;
+  background: #141414;
+  border-radius: 16px;
+  border: 1px solid #2a2a2a;
+}
+
+.no-results .material-symbols-outlined {
+  font-size: 48px;
+  color: #444;
+}
+
+.no-results-sub {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header_ugostitelji {
+    width: 90%;
+    padding: 2em;
+  }
+  .header_ugostitelji h1 {
+    font-size: 1.8rem;
+  }
+  
+  .preporuka {
+    flex-direction: column;
+    height: auto;
+    min-height: 400px;
+  }
+  .texts {
+    width: 100%;
+    height: auto;
+    padding: 1.5em;
+    order: 2;
+  }
+  .preporuka img {
+    width: 100%;
+    height: 200px;
+    order: 1;
+  }
+  
+  .ugostitelji_list {
+    grid-template-columns: 1fr;
+  }
+  
+  .filteri {
+    padding: 1em;
+  }
+  
+  .pretrazi {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .texts h1 {
+    font-size: 1.5rem;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn_reserve, .btn_more {
+    width: 100%;
+    text-align: center;
+  }
+}

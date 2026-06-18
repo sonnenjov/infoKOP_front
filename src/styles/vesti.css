@@ -1,0 +1,573 @@
+.vesti-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #121412;
+  color: #fff;
+  font-family: "JakartaReg", sans-serif;
+}
+
+.vesti-header {
+  position: relative;
+  width: 100%;
+  height: 38vh;
+  min-height: 260px;
+  background-image: url("../branding/images/118697525_3420461591348342_3344605957892253184_n.jpg");
+  background-size: cover;
+  background-position: center 30%;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.vesti-header__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 20, 18, 0.2) 0%,
+    rgba(18, 20, 18, 0.85) 80%,
+    #121412 100%
+  );
+}
+
+.vesti-header__inner {
+  position: relative;
+  z-index: 1;
+  padding: 2.5em 3em;
+}
+
+.vesti-header__eyebrow {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: var(--weather-inactive-summer);
+  margin: 0 0 0.5em;
+  text-transform: uppercase;
+}
+
+.vesti-header__title {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 3em;
+  margin: 0 0 0.3em;
+  line-height: 1.1;
+}
+
+.vesti-header__sub {
+  font-size: 0.95em;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  max-width: 520px;
+}
+
+.vesti-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1.5em 3em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.vesti-themes {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.vesti-theme-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.72em;
+  letter-spacing: 0.06em;
+  padding: 0.45em 1.1em;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.vesti-theme-btn:hover {
+  border-color: var(--weather-inactive-summer);
+  color: var(--weather-inactive-summer);
+}
+
+.vesti-theme-btn--active {
+  background: var(--weather-inactive-background-summer);
+  border-color: var(--weather-inactive-summer);
+  color: var(--weather-inactive-summer);
+}
+
+.vesti-search {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 0.45em 1.1em;
+  min-width: 220px;
+}
+
+.vesti-search__icon {
+  font-size: 1.1em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.vesti-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: "JakartaReg", sans-serif;
+  font-size: 0.85em;
+  width: 100%;
+}
+
+.vesti-search input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+.vesti-content {
+  padding: 2em 3em 4em;
+}
+
+.vesti-hero {
+  position: relative;
+  width: 100%;
+  height: 52vh;
+  min-height: 360px;
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 2em;
+  border: none;
+  transition: transform 0.25s;
+}
+
+.vesti-hero:hover {
+  transform: scale(1.005);
+}
+
+.vesti-hero__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(10, 12, 10, 0.95) 0%,
+    rgba(10, 12, 10, 0.5) 50%,
+    transparent 100%
+    
+  );
+  backdrop-filter: blur(1px);
+}
+
+.vesti-hero__body {
+  position: relative;
+  z-index: 1;
+  padding: 2em 2em;
+  width: 100%;
+}
+
+.vesti-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  margin-bottom: 0.7em;
+}
+
+.vesti-hero__date {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.7em;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.05em;
+}
+
+.vesti-hero__title {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 2em;
+  margin: 0 0 0.5em;
+  line-height: 1.2;
+  max-width: 680px;
+}
+
+.vesti-hero__excerpt {
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  margin: 0 0 1.2em;
+  line-height: 1.6;
+}
+
+.vesti-hero__footer {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  flex-wrap: wrap;
+}
+
+.vesti-hero__author,
+.vesti-hero__views {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  font-size: 0.78em;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: "JetBrain Mono", monospace;
+}
+
+.vesti-hero__author .material-symbols-outlined,
+.vesti-hero__views .material-symbols-outlined {
+  font-size: 1em;
+}
+
+.vesti-hero__cta {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  background: var(--weather-inactive-summer);
+  color: #0d1a0d;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5em 1.3em;
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.78em;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s;
+  margin-left: auto;
+}
+
+.vesti-hero__cta:hover {
+  opacity: 0.85;
+}
+
+.vesti-hero__cta .material-symbols-outlined {
+  font-size: 1em;
+}
+
+.vesti-tag {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.65em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(118, 184, 23, 0.15);
+  color: var(--weather-inactive-summer);
+  border: 1px solid rgba(118, 184, 23, 0.3);
+  border-radius: 4px;
+  padding: 0.25em 0.6em;
+}
+
+.vesti-urgent {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.65em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(220, 50, 50, 0.15);
+  color: #e05555;
+  border: 1px solid rgba(220, 50, 50, 0.3);
+  border-radius: 4px;
+  padding: 0.25em 0.6em;
+}
+
+.vesti-tag--card,
+.vesti-urgent--card {
+  position: absolute;
+  top: 0.8em;
+  left: 0.8em;
+}
+
+.vesti-urgent--card {
+  left: auto;
+  right: 0.8em;
+}
+
+.vesti-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;
+  margin-bottom: 2.5em;
+}
+
+.vesti-card {
+  background: #1a1c1a;
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.vesti-card:hover {
+  border-color: rgba(118, 184, 23, 0.3);
+  transform: translateY(-3px);
+}
+
+.vesti-card__img {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.vesti-card__body {
+  padding: 1.2em 1.4em 1.4em;
+}
+
+.vesti-card__date {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.65em;
+  color: var(--weather-inactive-summer);
+  letter-spacing: 0.12em;
+  margin: 0 0 0.6em;
+  text-transform: uppercase;
+}
+
+.vesti-card__title {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 1.05em;
+  margin: 0 0 0.6em;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.vesti-card__excerpt {
+  font-size: 0.82em;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.6;
+  margin: 0 0 1.1em;
+}
+
+.vesti-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.68em;
+  color: rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 0.8em;
+}
+
+.vesti-card__author,
+.vesti-card__views {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.vesti-card__author .material-symbols-outlined,
+.vesti-card__views .material-symbols-outlined {
+  font-size: 0.95em;
+}
+
+
+
+.vesti-newsletter {
+  margin: 3em 3em 0;
+  background: linear-gradient(135deg, #0d1f0d 0%, #1a2e1a 100%);
+  border: 1px solid rgba(118, 184, 23, 0.15);
+  border-radius: 20px;
+  padding: 4em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  align-items: center;
+}
+
+.vesti-newsletter__title {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 2.2em;
+  margin: 0 0 0.4em;
+  line-height: 1.15;
+}
+
+.vesti-newsletter__sub {
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.vesti-newsletter__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.vesti-newsletter__input {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.8em 1.4em;
+}
+
+.vesti-newsletter__input .material-symbols-outlined {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.1em;
+}
+
+.vesti-newsletter__input input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: "JakartaReg", sans-serif;
+  font-size: 0.9em;
+  width: 100%;
+}
+
+.vesti-newsletter__input input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.vesti-newsletter__btn {
+  background: var(--weather-inactive-summer);
+  color: #0d1a0d;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85em 2em;
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  width: 100%;
+}
+
+.vesti-newsletter__btn:hover {
+  opacity: 0.88;
+}
+
+.vesti-newsletter__privacy {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.25);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .vesti-newsletter {
+    grid-template-columns: 1fr;
+    margin: 2em 1.5em 0;
+    padding: 2.5em;
+    gap: 2em;
+  }
+  .vesti-newsletter__title {
+    font-size: 1.6em;
+  }
+}
+
+.vesti-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.vesti-page-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.8em;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vesti-page-btn:hover:not(:disabled) {
+  border-color: var(--weather-inactive-summer);
+  color: var(--weather-inactive-summer);
+}
+
+.vesti-page-btn--active {
+  background: var(--weather-inactive-background-summer);
+  border-color: var(--weather-inactive-summer);
+  color: var(--weather-inactive-summer);
+}
+
+.vesti-page-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.vesti-loading,
+.vesti-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  padding: 6em 2em;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.85em;
+}
+
+.vesti-loading__spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--weather-inactive-summer);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.vesti-empty .material-symbols-outlined {
+  font-size: 2.5em;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@media (max-width: 900px) {
+  .vesti-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .vesti-controls {
+    padding: 1.2em 1.5em;
+  }
+  .vesti-content {
+    padding: 1.5em 1.5em 3em;
+  }
+  .vesti-header__inner {
+    padding: 2em 1.5em;
+  }
+  .vesti-header__title {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 600px) {
+  .vesti-grid {
+    grid-template-columns: 1fr;
+  }
+  .vesti-hero__title {
+    font-size: 1.4em;
+  }
+  .vesti-themes {
+    gap: 0.4em;
+  }
+}

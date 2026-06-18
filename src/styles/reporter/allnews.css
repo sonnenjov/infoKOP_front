@@ -1,0 +1,110 @@
+.news_feed_main {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  height: fit-content;
+  background-color: #121212;
+  color: white;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.categories {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1em;
+  padding: 1em;
+}
+
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1em;
+  padding: 1em;
+}
+
+.news_all {
+  width: 100%;
+  display: grid;
+  height: fit-content;
+  grid-template-columns: repeat(3,auto);
+  grid-template-rows: auto;
+  gap:2em;
+  padding: 1em;
+}
+
+.article_one {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid #222222;
+  border-radius: 20px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.article_layout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #2222223f;
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+
+.article_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  color: white;
+  z-index: 10;
+  font-family: Jakarta Bold;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.statuslines {
+  display: flex;
+  width: 100%;
+  width: fit-content;
+  gap: 1em;
+}
+.statuslines p {
+ 
+  color: var(--weather-active-summer);
+  background-color: var(--weather-inactive-summer);
+  font-family: JetBrain Mono;
+  padding: 0.4em;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.bottom_info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.493);
+}
+.title_news h1 {
+  margin: 0;
+}
+
+.text_news p {
+  margin: 0;
+}
+
+.categories  p {
+  font-family: Jakarta Bold;
+}
+
+.filter p {
+  font-family: Jakarta Bold;
+}

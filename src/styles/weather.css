@@ -1,0 +1,195 @@
+@import url("./root.css");
+
+
+.weather_report {
+  position: relative;
+  
+  width: 100vw;
+  height: 20vh;
+  color: white;
+  border-radius:20px;
+  -webkit-box-shadow: 0px 0px 19px -7px var(--weather-summer); 
+  box-shadow: 0px 0px 19px -7px var(--weather-summer);
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  z-index: 10;
+  margin-bottom: 1em;
+}
+
+.weather_report_inner_summer {
+  position: relative;
+  width: 96%;
+  background-color: var(--weather-inactive-summer);
+  border-radius: 20px;
+  height: 92%;
+  border-radius: 20px;
+  font-family: Jakarta Bold;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+}
+
+.weather_report_inner_winter {
+  position: relative;
+  width: 96%;
+  background-color: var(--weather-active-winter);
+  height: 92%;
+  border-radius: 20px;
+  font-family: Jakarta Bold;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+}
+.weatherMap {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width:100%;
+  color: aliceblue;
+  font-family: Jakarta Bold;
+  font-style:normal;
+  font-weight: 900;
+}
+
+
+
+
+.current {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20em;
+  gap: 1em;
+}
+.text {
+  gap: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+.temp {
+  margin: 0;
+  font-size: xx-large;
+  display: flex;
+  font-family: Jakarta Bold;
+  align-items: center;
+  justify-content: center;
+}
+
+.temps {
+  font-family: Jakarta Bold;
+}
+
+.icon {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  filter: invert();
+}
+
+.vertical {
+  border-left: 2px solid rgb(219, 219, 219); /* Thickness and color */
+  height: 100px;  
+  align-self: center;
+  }
+
+
+  @media screen and (max-width: 786px) {
+    
+.weather_report_inner_summer {
+  position: relative;
+  width: fit-content;
+  padding: 1em 2em;
+  min-width: fit-content;
+  min-height: fit-content;
+  background-color: var(--weather-inactive-summer);
+  border-radius: 20px;
+  height: fit-content;
+  border-radius: 20px;
+  font-family: Jakarta Bold;
+  text-transform: uppercase;
+  align-items: center;
+  font-size: 0.6em;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.weather_report_inner_winter {
+  position: relative;
+  width: fit-content;
+  padding: 1em 2em;
+  min-width: fit-content;
+  min-height: fit-content;
+  background-color: var(--weather-inactive-winter);
+  border-radius: 20px;
+  height: fit-content;
+  border-radius: 20px;
+  font-family: Jakarta Bold;
+  text-transform: uppercase;
+  align-items: center;
+  font-size: 0.6em;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+    .current {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0em;
+}
+.text {
+  font-size: normal;
+
+  gap: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+}
+.temp {
+  margin: 0;
+  font-size: large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  filter: invert();
+}
+
+  }
+
+
+  .clouds {
+    filter: invert();
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    scale: 1.4;
+  }
+  div.icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

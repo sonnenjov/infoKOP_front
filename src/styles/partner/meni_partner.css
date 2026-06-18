@@ -1,0 +1,513 @@
+.meni_company {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid_meni_company {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+    "m1"
+    "m2"
+    "m3";
+  width: 100%;
+  height: 100dvh;
+  gap: 1em;
+  padding: 2em;
+}
+
+/* ── Header ── */
+.meni_header {
+  background-image: url('../../branding/images/649545020_26431358533165322_3304444365875728851_n.jpg');
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  padding: 2em 3em;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.meni_header_bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background-color: #22222296;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.meni_header_content {
+  z-index: 10;
+  position: relative;
+  font-family: Jakarta Bold;
+  color: white;
+}
+
+.meni_header_content h1 {
+  text-transform: capitalize;
+  margin: 0.2em 0;
+}
+
+.meni_header_content p {
+  margin: 0;
+  color: gainsboro;
+  font-family: JakartaReg;
+}
+
+.novi_artikal_btn {
+  z-index: 10;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  background-color: var(--weather-active-summer);
+  color: var(--weather-inactive-summer);
+  border: none;
+  border-radius: 20px;
+  padding: 0.6em 1.2em;
+  font-family: Jakarta Bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.novi_artikal_btn:hover {
+  opacity: 0.85;
+}
+
+/* ── Stats ── */
+.meni_stats {
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.mstat {
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: #121412;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+  color: var(--weather-inactive-summer);
+  font-family: JetBrain Mono;
+  text-transform: uppercase;
+}
+
+.mstat_top {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+}
+
+.mstat_top span {
+  color: var(--weather-active-summer);
+  background-color: var(--weather-inactive-summer);
+  padding: 0.5em;
+  border-radius: 10px;
+  scale: 1.3;
+  margin: 0.5em;
+}
+
+.mstat_bottom p {
+  font-family: Jakarta Bold;
+  font-weight: bolder;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.mstat_active {
+  background-color: var(--weather-inactive-summer);
+  color: var(--weather-active-summer);
+}
+
+.mstat_active .mstat_top span {
+  color: var(--weather-inactive-summer);
+  background-color: var(--weather-active-summer);
+}
+
+.mstat_out .mstat_bottom p {
+  color: #ff4d4d;
+}
+
+/* ── Menu list ── */
+.meni_lista {
+  background-color: #121412;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  gap: 1em;
+  overflow: hidden;
+}
+
+.meni_tabs {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.meni_tab {
+  background: none;
+  border: 1px solid #333;
+  color: gainsboro;
+  border-radius: 20px;
+  padding: 0.4em 1em;
+  font-family: Jakarta Bold;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.meni_tab.active {
+  background-color: var(--weather-inactive-summer);
+  color: var(--weather-active-summer);
+  border-color: var(--weather-inactive-summer);
+}
+
+.meni_row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 0.5fr 0.5fr;
+  align-items: center;
+  gap: 1em;
+}
+
+.meni_row_header {
+  font-family: JetBrain Mono;
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  padding: 0 0.5em;
+}
+
+.meni_items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.meni_row_item {
+  background-color: #1a1e1a;
+  border-radius: 10px;
+  padding: 0.8em 0.5em;
+  border: 1px solid #2a2e2a;
+}
+
+.meni_row_item:hover {
+  border-color: #444;
+}
+
+.meni_item_info {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+}
+
+.meni_item_img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background-color: #2a2e2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.meni_item_img span {
+  color: #666;
+}
+
+.meni_item_name {
+  color: white;
+  font-family: Jakarta Bold;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.meni_item_desc {
+  color: #888;
+  font-family: JakartaReg;
+  margin: 0;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.meni_allergens {
+  display: flex;
+  gap: 0.3em;
+}
+
+.allergen_icon {
+  color: #888;
+  font-size: 1rem;
+}
+
+.meni_price {
+  color: var(--weather-active-summer);
+  font-family: JetBrain Mono;
+  font-weight: 800;
+}
+
+/* ── Toggle ── */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle_slider {
+  position: absolute;
+  inset: 0;
+  background-color: #333;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.toggle_slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.toggle input:checked + .toggle_slider {
+  background-color: var(--weather-active-summer);
+}
+
+.toggle input:checked + .toggle_slider::before {
+  transform: translateX(20px);
+}
+
+/* ── Actions ── */
+.meni_actions {
+  display: flex;
+  gap: 0.4em;
+}
+
+.action_btn {
+  background: none;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #888;
+  cursor: pointer;
+  padding: 0.3em;
+  display: flex;
+  align-items: center;
+  transition: all 0.15s;
+}
+
+.action_btn:hover {
+  color: white;
+  border-color: #666;
+}
+
+.action_delete:hover {
+  color: #ff4d4d;
+  border-color: #ff4d4d;
+}
+
+/* ── Empty state ── */
+.meni_empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 3em;
+  color: #666;
+  font-family: JakartaReg;
+}
+
+.meni_empty span {
+  font-size: 2.5rem;
+}
+
+.meni_empty button {
+  background-color: var(--weather-inactive-summer);
+  color: var(--weather-active-summer);
+  border: none;
+  border-radius: 20px;
+  padding: 0.5em 1.2em;
+  font-family: Jakarta Bold;
+  cursor: pointer;
+  margin-top: 0.5em;
+}
+
+/* ── Modal ── */
+.meni_modal_overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #000000bb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.meni_modal {
+  background-color: #1a1e1a;
+  border-radius: 20px;
+  padding: 2em;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+  border: 1px solid #2a2e2a;
+}
+
+.meni_modal_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meni_modal_header h2 {
+  color: white;
+  font-family: Jakarta Bold;
+  margin: 0;
+}
+
+.meni_modal_header button {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.meni_modal_body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.meni_modal_body label {
+  color: #888;
+  font-family: JetBrain Mono;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.meni_modal_body input,
+.meni_modal_body select {
+  background-color: #121412;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: white;
+  padding: 0.7em 1em;
+  font-family: JakartaReg;
+  font-size: 0.95rem;
+  outline: none;
+  width: 100%;
+}
+
+.meni_modal_body input:focus,
+.meni_modal_body select:focus {
+  border-color: var(--weather-active-summer);
+}
+
+.meni_modal_footer {
+  display: flex;
+  gap: 0.8em;
+  justify-content: flex-end;
+}
+
+.btn_cancel {
+  background: none;
+  border: 1px solid #444;
+  color: #888;
+  border-radius: 20px;
+  padding: 0.6em 1.4em;
+  font-family: Jakarta Bold;
+  cursor: pointer;
+}
+
+.btn_save {
+  background-color: var(--weather-active-summer);
+  color: var(--weather-inactive-summer);
+  border: none;
+  border-radius: 20px;
+  padding: 0.6em 1.4em;
+  font-family: Jakarta Bold;
+  cursor: pointer;
+}
+
+.btn_save:hover {
+  opacity: 0.85;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .meni_company {
+    height: fit-content;
+    padding-bottom: 4em;
+    padding-top: 4em;
+  }
+
+  .grid_meni_company {
+    height: fit-content;
+    padding: 1em;
+  }
+
+  .meni_header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+  }
+
+  .meni_stats {
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  .meni_row {
+    grid-template-columns: 1fr 0.5fr 0.5fr;
+    grid-template-rows: auto auto;
+  }
+
+  .meni_row_header {
+    display: none;
+  }
+
+  .meni_allergens { display: none; }
+
+  .meni_item_desc {
+    max-width: 140px;
+  }
+}

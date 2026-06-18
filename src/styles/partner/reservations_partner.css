@@ -1,0 +1,379 @@
+/* styles/partner/rezervacije_partner.css */
+
+.partner-rezervacije {
+  padding: 20px;
+  color: #e2e3df;
+}
+
+.rezervacije-header {
+  margin-bottom: 24px;
+}
+
+.rezervacije-header h1 {
+  font-family: NationalParkSemiBold, sans-serif;
+  font-size: 28px;
+  margin: 0 0 4px 0;
+  color: #e2e3df;
+}
+
+.rezervacije-header p {
+  font-family: 'JetBrain Mono', monospace;
+  font-size: 14px;
+  color: #c1cab2;
+  margin: 0;
+}
+
+/* Stats */
+.rezervacije-stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #0d0f0d;
+  border: 1px solid #2a2f2a;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(149, 218, 60, 0.1);
+}
+
+.stat-icon .material-symbols-outlined {
+  font-size: 24px;
+}
+
+.stat-card.total .stat-icon { background: rgba(149, 218, 60, 0.1); }
+.stat-card.total .stat-icon .material-symbols-outlined { color: #95da3c; }
+
+.stat-card.confirmed .stat-icon { background: rgba(52, 211, 153, 0.1); }
+.stat-card.confirmed .stat-icon .material-symbols-outlined { color: #34d399; }
+
+.stat-card.pending .stat-icon { background: rgba(251, 191, 36, 0.1); }
+.stat-card.pending .stat-icon .material-symbols-outlined { color: #fbbf24; }
+
+.stat-card.cancelled .stat-icon { background: rgba(239, 68, 68, 0.1); }
+.stat-card.cancelled .stat-icon .material-symbols-outlined { color: #ef4444; }
+
+.stat-card.revenue .stat-icon { background: rgba(96, 165, 250, 0.1); }
+.stat-card.revenue .stat-icon .material-symbols-outlined { color: #60a5fa; }
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-family: 'JetBrain Mono', monospace;
+  font-size: 10px;
+  color: #c1cab2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-family: NationalParkSemiBold, sans-serif;
+  font-size: 20px;
+  color: #e2e3df;
+}
+
+/* Filters */
+.rezervacije-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-tabs button {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #2a2f2a;
+  border-radius: 8px;
+  color: #c1cab2;
+  font-family: 'JetBrain Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-tabs button:hover {
+  background: #1e201e;
+}
+
+.filter-tabs button.active {
+  background: rgba(149, 218, 60, 0.12);
+  border-color: #95da3c;
+  color: #95da3c;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0d0f0d;
+  border: 1px solid #2a2f2a;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.search-box .material-symbols-outlined {
+  color: #c1cab2;
+  font-size: 20px;
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  color: #e2e3df;
+  font-family: 'JetBrain Mono', monospace;
+  font-size: 12px;
+  outline: none;
+  min-width: 200px;
+}
+
+.search-box input::placeholder {
+  color: #7a7f7a;
+}
+
+/* Table */
+.rezervacije-table-wrapper {
+  background: #0d0f0d;
+  border: 1px solid #2a2f2a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rezervacije-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rezervacije-table thead {
+  background: #1a1d1a;
+}
+
+.rezervacije-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-family: 'JetBrain Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: #c1cab2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #2a2f2a;
+}
+
+.rezervacije-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #1e201e;
+  font-family: 'JetBrain Mono', monospace;
+  font-size: 12px;
+  color: #e2e3df;
+}
+
+.rezervacije-table tbody tr:hover {
+  background: #1a1d1a;
+}
+
+.res-id {
+  font-weight: 600;
+  color: #95da3c;
+}
+
+.guest-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.guest-name {
+  font-family: NationalParkSemiBold, sans-serif;
+  font-size: 13px;
+}
+
+.guest-email {
+  font-size: 10px;
+  color: #7a7f7a;
+}
+
+.res-amount {
+  font-family: NationalParkSemiBold, sans-serif;
+  color: #e2e3df;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-badge .material-symbols-outlined {
+  font-size: 14px;
+}
+
+.status_confirmed {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+}
+
+.status_pending {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+}
+
+.status_cancelled {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+/* Actions */
+.res-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #c1cab2;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  background: #1e201e;
+}
+
+.action-btn.view:hover {
+  color: #60a5fa;
+}
+
+.action-btn.confirm {
+  color: #95da3c;
+}
+
+.action-btn.confirm:hover {
+  background: rgba(149, 218, 60, 0.15);
+}
+
+/* No results */
+.no-reservations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 8px;
+}
+
+.no-reservations p {
+  font-family: NationalParkSemiBold, sans-serif;
+  font-size: 18px;
+  color: #e2e3df;
+  margin: 0;
+}
+
+.no-reservations .sub-text {
+  font-family: 'JetBrain Mono', monospace;
+  font-size: 12px;
+  color: #7a7f7a;
+}
+
+/* Loading & Error */
+.rezervacije-loading,
+.rezervacije-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+}
+
+.loading-spinner {
+  border: 3px solid #1e201e;
+  border-top: 3px solid #95da3c;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.rezervacije-error button {
+  background: #95da3c;
+  color: #1a1d1a;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 8px;
+  font-family: NationalParkSemiBold, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.rezervacije-error button:hover {
+  background: #76b817;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rezervacije-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .rezervacije-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-tabs {
+    overflow-x: auto;
+  }
+  
+  .rezervacije-table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .rezervacije-table {
+    min-width: 900px;
+  }
+}

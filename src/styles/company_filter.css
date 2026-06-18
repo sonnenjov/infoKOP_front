@@ -1,0 +1,146 @@
+@import url('./root.css');
+
+.company-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.company-filter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.company-filter-header p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  margin: 0;
+  color: var(--weather-inactive-summer);
+  text-transform: uppercase;
+}
+
+.company-filter-header .material-symbols-outlined {
+  font-size: 16px;
+  color: var(--weather-inactive-summer);
+}
+
+.company-search-wrapper {
+  position: relative;
+}
+
+.company-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #1a1a1a;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 8px;
+  padding: 0.55em 0.8em;
+  color: #e2e3df;
+  font-size: 0.85rem;
+}
+
+.company-search-input::placeholder {
+  color: #777;
+}
+
+.company-search-input:focus {
+  outline: none;
+  border-color: var(--weather-inactive-summer);
+}
+
+.company-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #1f1f1f;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  border-radius: 10px;
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 300;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.company-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.6em 0.8em;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #cfcfcf;
+}
+
+.company-dropdown-item:hover {
+  background: #2a2a2a;
+}
+
+.company-dropdown-item.loading {
+  color: #888;
+  cursor: default;
+}
+
+.company-dropdown-item.loading:hover {
+  background: transparent;
+}
+
+.company-dropdown-item .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--weather-inactive-summer);
+}
+
+.company-logo-small {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.company-name {
+  color: #e2e3df;
+  font-size: 0.85rem;
+}
+
+.company-type {
+  color: #888;
+  font-size: 0.7rem;
+  text-transform: capitalize;
+}
+
+.selected-company {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1a1a1a;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 8px;
+  padding: 0.5em 0.7em;
+}
+
+.selected-company-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.clear-company {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.clear-company:hover {
+  color: #e2e3df;
+}
+
+.clear-company .material-symbols-outlined {
+  font-size: 18px;
+}

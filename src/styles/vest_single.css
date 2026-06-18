@@ -1,0 +1,485 @@
+/* ── SINGLE ARTICLE PAGE ────────────────────────────────── */
+.vd-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #121412;
+  color: #fff;
+  font-family: "JakartaReg", sans-serif;
+  padding-bottom: 6em;
+}
+
+.vd-back {
+  position: fixed;
+  top: 1.5em;
+  left: 1.5em;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  background: rgba(18, 20, 18, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+  padding: 0.55em 1.2em 0.55em 0.8em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vd-back:hover {
+  border-color: var(--weather-inactive-summer);
+  color: var(--weather-inactive-summer);
+}
+
+.vd-back .material-symbols-outlined {
+  font-size: 1.1em;
+}
+
+.vd-cover {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 420px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+.vd-cover__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 20, 18, 0.1) 0%,
+    rgba(18, 20, 18, 0.6) 60%,
+    #121412 100%
+  );
+}
+
+.vd-cover__meta {
+  position: relative;
+  z-index: 1;
+  padding: 2em 4em;
+  display: flex;
+  gap: 0.6em;
+}
+
+.vd-tag {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(118, 184, 23, 0.15);
+  color: var(--weather-inactive-summer);
+  border: 1px solid rgba(118, 184, 23, 0.3);
+  border-radius: 4px;
+  padding: 0.3em 0.7em;
+}
+
+.vd-tag--sm {
+  position: absolute;
+  top: 0.7em;
+  left: 0.7em;
+  font-size: 0.6em;
+}
+
+.vd-urgent {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(220, 50, 50, 0.15);
+  color: #e05555;
+  border: 1px solid rgba(220, 50, 50, 0.3);
+  border-radius: 4px;
+  padding: 0.3em 0.7em;
+}
+
+.vd-article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+.vd-article__header {
+  margin-bottom: 2.5em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: 2em;
+}
+
+.vd-article__info {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+
+.vd-article__date,
+.vd-article__author,
+.vd-article__views {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.72em;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.04em;
+}
+
+.vd-article__date .material-symbols-outlined,
+.vd-article__author .material-symbols-outlined,
+.vd-article__views .material-symbols-outlined {
+  font-size: 1em;
+}
+
+.vd-article__title {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 2.6em;
+  line-height: 1.15;
+  margin: 0 0 1em;
+  color: #fff;
+}
+
+.vd-article__tags {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.vd-article__tag {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.7em;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.06em;
+}
+
+.vd-article__content {
+  font-size: 1.05em;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.vd-article__content p {
+  margin: 0 0 1.4em;
+}
+
+.vd-article__content h2 {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 1.5em;
+  color: #fff;
+  margin: 2em 0 0.6em;
+}
+
+.vd-article__content h3 {
+  font-family: "NationalParkSemiBold", sans-serif;
+  font-size: 1.2em;
+  color: #fff;
+  margin: 1.5em 0 0.5em;
+}
+
+.vd-article__content strong {
+  color: #fff;
+  font-family: "Jakarta Bold", sans-serif;
+}
+
+.vd-article__content ul,
+.vd-article__content ol {
+  padding-left: 1.5em;
+  margin: 0 0 1.4em;
+}
+
+.vd-article__content li {
+  margin-bottom: 0.5em;
+}
+
+.vd-article__content blockquote {
+  border-left: 3px solid var(--weather-inactive-summer);
+  margin: 1.5em 0;
+  padding: 0.5em 1.2em;
+  color: rgba(255, 255, 255, 0.55);
+  font-style: italic;
+}
+
+.vd-share {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-top: 3em;
+  padding-top: 2em;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.vd-share__label {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.72em;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vd-share__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.72em;
+  padding: 0.5em 1.1em;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.04em;
+}
+
+.vd-share__btn:hover {
+  border-color: var(--weather-inactive-summer);
+  color: var(--weather-inactive-summer);
+}
+
+.vd-share__btn .material-symbols-outlined {
+  font-size: 1em;
+}
+
+.vd-related {
+  max-width: 1100px;
+  margin: 4em auto 0;
+  padding: 0 2em;
+}
+
+.vd-related__title {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 1.4em;
+  margin: 0 0 1.5em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.vd-related__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;
+  margin-bottom: 2em;
+}
+
+.vd-related__card {
+  background: #1a1c1a;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.vd-related__card:hover {
+  border-color: rgba(118, 184, 23, 0.3);
+  transform: translateY(-3px);
+}
+
+.vd-related__img {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+}
+
+.vd-related__body {
+  padding: 1em 1.2em 1.3em;
+}
+
+.vd-related__date {
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.62em;
+  color: var(--weather-inactive-summer);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 0.5em;
+}
+
+.vd-related__card-title {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 0.95em;
+  margin: 0 0 0.5em;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.vd-related__excerpt {
+  font-size: 0.78em;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.vd-all-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.78em;
+  letter-spacing: 0.06em;
+  padding: 0.6em 1.5em;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 0 auto;
+}
+
+.vd-all-btn:hover {
+  border-color: var(--weather-inactive-summer);
+  color: var(--weather-inactive-summer);
+}
+
+.vd-all-btn .material-symbols-outlined {
+  font-size: 1em;
+}
+
+.vd-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #121412;
+}
+
+.vd-loading__spinner {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--weather-inactive-summer);
+  border-radius: 50%;
+  animation: vd-spin 0.8s linear infinite;
+}
+
+.vd-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #121412;
+  color: rgba(255, 255, 255, 0.4);
+  gap: 1em;
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.85em;
+}
+
+.vd-error .material-symbols-outlined {
+  font-size: 2.5em;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.vd-error button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.85em;
+  padding: 0.5em 1.3em;
+  cursor: pointer;
+}
+
+@keyframes vd-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .vd-related__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .vd-article__title {
+    font-size: 1.9em;
+  }
+}
+
+@media (max-width: 600px) {
+  .vd-related__grid {
+    grid-template-columns: 1fr;
+  }
+  .vd-cover {
+    height: 50vh;
+  }
+  .vd-cover__meta {
+    padding: 1.5em 1.5em;
+  }
+  .vd-article {
+    padding: 0 1.2em;
+  }
+  .vd-article__title {
+    font-size: 1.5em;
+  }
+  .vd-related {
+    padding: 0 1.2em;
+  }
+}
+
+.vd-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #121412;
+  gap: 1em;
+  text-align: center;
+  padding: 2em;
+}
+
+.vd-error__code {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 8em;
+  color: rgba(255, 255, 255, 0.05);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.vd-error__icon {
+  font-size: 3em;
+  color: var(--weather-inactive-summer);
+  margin-top: -1em;
+}
+
+.vd-error__title {
+  font-family: "NationalParkBold", sans-serif;
+  font-size: 1.8em;
+  color: #fff;
+  margin: 0;
+}
+
+.vd-error__sub {
+  font-family: "JakartaReg", sans-serif;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}
+
+.vd-error__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "JetBrain Mono", monospace;
+  font-size: 0.78em;
+  padding: 0.6em 1.5em;
+  cursor: pointer;
+  margin-top: 0.5em;
+  transition: all 0.2s;
+}
+
+.vd-error__btn:hover {
+  border-color: var(--weather-inactive-summer);
+  color: var(--weather-inactive-summer);
+}

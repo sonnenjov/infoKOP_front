@@ -1,0 +1,450 @@
+.smestaj_partner {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  overflow-x: hidden; /* Sprečava horizontalni scroll */
+}
+
+.inner_grid_smestaj {
+  width: 100%;
+  max-width: 100%; /* Ograničava maksimalnu širinu */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Koristi 1fr umesto auto */
+  grid-template-rows: auto;
+  padding: 2em;
+  gap: 1em;
+  grid-template-areas: 
+    "s1 s1 s1"
+    "s2 s2 s2"
+    "s3 s3 s5"
+    "s3 s3 s5"
+    "s3 s3 s5"
+    "s3 s3 s5"
+    "s3 s3 s5"
+    "s4 s4 s6"
+    "s4 s4 s6";
+  box-sizing: border-box; /* Uključuje padding u width */
+}
+
+/* Svi elementi neka koriste border-box */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.smestajbox {
+  border: 1px solid gray;
+  border-radius: 20px;
+  overflow: hidden; /* Sprečava overflow unutar box-a */
+  width: 100%;
+  min-width: 0; /* Dozvoljava smanjivanje ispod sadržaja */
+}
+
+.topshelf {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  flex-wrap: wrap; /* Dozvoljava prelamanje */
+  gap: 1em;
+}
+
+.topshelf h5 {
+  margin: 0;
+  font-family: Jakarta Bold;
+  color: white;
+  font-size: 1em;
+  letter-spacing: 1px;
+}
+
+.addunit {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: JetBrain Mono;
+  gap: 0.5em;
+  background-color: var(--weather-inactive-summer);
+  border-radius: 20px;
+  padding: 0.5em 1em;
+  white-space: nowrap; /* Sprečava prelamanje teksta u dugmetu */
+}
+
+.addunit span {
+  padding: 0.3em;
+  border-radius: 20px;
+  color: var(--weather-inactive-summer);
+  background-color: var(--weather-active-summer);
+  font-size: 1.2em;
+}
+
+.jedinice {
+  border: none;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 100%;
+  gap: 1em;
+  flex-wrap: wrap; /* Dozvoljava prelamanje na manjim ekranima */
+}
+
+.unit1 h4,
+.unit2 h4,
+.unit3 h4 {
+  margin: 0;
+  padding: 0;
+  color: var(--weather-active-summer);
+  font-family: JetBrain Mono;
+  font-size: 0.8em;
+}
+
+.unit1, .unit2, .unit3 {
+  background-color: var(--weather-inactive-summer);
+  padding: 1em;
+  height: 100%;
+  flex: 1;
+  min-width: 120px; /* Minimalna širina za svaku jedinicu */
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.unit2, .unit2 h4 {
+  background-color: #222222;
+  color: var(--weather-inactive-summer);
+}
+
+.unit1 .unit_part, 
+.unit2 .unit_part, 
+.unit3 .unit_part {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+.unit1 .unit_part span, 
+.unit2 .unit_part span, 
+.unit3 .unit_part span {
+  color: var(--weather-active-summer);
+  font-size: 1.5em;
+  flex-shrink: 0; /* Sprečava smanjivanje ikone */
+}
+
+.unit2 .unit_part span {
+  color: var(--weather-inactive-summer);
+}
+
+.unit_part p {
+  font-family: JetBrain Mono;
+  margin: 0;
+  font-size: 0.9em;
+  word-break: break-word; /* Prelamanje dugih brojeva */
+}
+
+.lista_smestaja {
+  background-color: #222222;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+div.title {
+  padding: 1em;
+  border-bottom: 1px solid gray;
+  color: white;
+  font-family: JetBrain Mono;
+  font-size: 0.9em;
+  word-break: break-word;
+}
+
+div.listasmestaja {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Koristi grid umesto flex */
+  align-items: center;
+  color: white;
+  font-family: JakartaReg;
+  padding: 1em;
+  gap: 0.5em;
+}
+
+div.listasmestaja p {
+  margin: 0;
+  font-size: 0.8em;
+  word-break: break-word;
+}
+
+.pristupi {
+  height: fit-content;
+  overflow: hidden;
+  background-color: #222222;
+  width: 100%;
+}
+
+.prist {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  padding: 1em;
+}
+
+.prist p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 1em;
+  border-radius: 20px;
+  background-color: #121212;
+  color: white;
+  font-family: Jakarta Bold;
+  width: 100%;
+}
+
+.prist p span:first-child {
+  font-size: 20px;
+  min-width: 24px;
+  flex-shrink: 0;
+}
+
+.prist p span.material-symbols-outlined {
+  flex-shrink: 0;
+}
+
+.prist p .custom-checkbox-partner {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.formiranjecena {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 1em;
+  background-color: var(--weather-inactive-summer);
+  width: 100%;
+  gap: 1em;
+}
+
+.formiranjecena .title {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--weather-active-summer);
+  font-size: 0.9em;
+  text-transform: capitalize;
+  flex-wrap: wrap;
+}
+
+.letnja,
+.zimska {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8em;
+  background-color: rgba(255, 255, 255, 0.164);
+  border-radius: 10px;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.letnja .leva,
+.zimska .leva {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.letnja .desna,
+.zimska .desna {
+  display: flex;
+  font-family: JakartaReg;
+  font-size: 0.7em;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.leva p {
+  font-family: JetBrain Mono;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.formiranjecena button {
+  width: 100%;
+  border: 1px solid var(--weather-active-summer);
+  padding: 0.8em;
+  color: var(--weather-active-summer);
+  font-family: JetBrain Mono;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.164);
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+/* RESPONSIVE - TABLET */
+@media (max-width: 768px) {
+  .inner_grid_smestaj {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1em;
+    gap: 0.8em;
+    grid-template-areas: 
+      "s1 s1"
+      "s2 s2"
+      "s3 s3"
+      "s4 s5"
+      "s6 s6";
+  }
+  
+  .jedinice {
+    flex-wrap: wrap;
+  }
+  
+  .unit1, .unit2, .unit3 {
+    min-width: 100px;
+  }
+  
+  div.listasmestaja {
+    grid-template-columns: repeat(5, 1fr);
+    font-size: 0.7em;
+    gap: 0.3em;
+  }
+}
+
+/* RESPONSIVE - MOBIL */
+@media (max-width: 480px) {
+  .smestaj_partner {
+    overflow-x: hidden;
+  }
+  
+  .inner_grid_smestaj {
+    grid-template-columns: 1fr;
+    padding: 0.8em;
+    gap: 0.8em;
+    height: fit-content;
+    grid-template-areas: 
+      "s1"
+      "s2"
+      "s3"
+      "s4"
+      "s5"
+      "s6";
+    padding-top: 5em;
+    padding-bottom: 10em;
+  }
+  
+  .topshelf {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .addunit {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .jedinice {
+    flex-direction: column;
+  }
+  
+  .unit1, .unit2, .unit3 {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  div.listasmestaja {
+    grid-template-columns: 1fr;
+    gap: 0.5em;
+    text-align: center;
+  }
+  
+  div.listasmestaja p {
+    padding: 0.3em;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+  }
+  
+  .prist p {
+    padding: 0.8em;
+  }
+  
+  .prist p span:first-child {
+    font-size: 18px;
+    min-width: 20px;
+  }
+  
+  .letnja, .zimska {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .letnja .desna,
+  .zimska .desna {
+    justify-content: center;
+  }
+}
+
+
+.custom-checkbox-partner {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-checkbox-partner input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.custom-checkbox-partner .status-switch {
+  width: clamp(35px, 8vw, 50px);
+  height: clamp(18px, 4vw, 25px);
+  background-color: #444;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.custom-checkbox-partner .status-switch::after {
+  content: "";
+  width: clamp(14px, 3vw, 21px);
+  height: clamp(14px, 3vw, 21px);
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2px;
+  transition: all 0.3s ease;
+  z-index: 2;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.custom-checkbox-partner input:checked + label .status-switch {
+  background-color: #4caf50;
+}
+
+.custom-checkbox-partner input:checked + label .status-switch::after {
+  left: calc(100% - clamp(16px, 3.5vw, 23px));
+}
+
+.custom-checkbox-partner .status-switch:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}

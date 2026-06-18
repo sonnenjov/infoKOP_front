@@ -1,0 +1,41 @@
+.login-tabs {
+  display: flex;
+  border-bottom: 1px solid #424937;
+  margin-bottom: 24px;
+}
+
+.login-tab {
+  flex: 1;
+  padding: 11px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #8c947e;
+  font-family: 'JetBrain Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px;
+}
+
+.login-tab:hover { color: #e2e3df; }
+
+.login-tab--active {
+  color: #95da3c;
+  border-bottom-color: #95da3c;
+}
+
+.login-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(147, 0, 10, 0.15);
+  border: 1px solid #93000a;
+  border-radius: 0.5rem;
+  padding: 10px 14px;
+  color: #ffb4ab;
+  font-size: 13px;
+}
