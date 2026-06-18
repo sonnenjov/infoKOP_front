@@ -70,7 +70,7 @@ export function useDogadjaji(filters: DogadjajFilters) {
     }
 
     const queryString = params.toString()
-    const url = `/dogadjaji/${queryString ? `?${queryString}` : ''}`
+    const url = `api/dogadjaji/${queryString ? `?${queryString}` : ''}`
 
     apiFetch<PaginatedResponse<Dogadjaj>>(url)
       .then(setData)

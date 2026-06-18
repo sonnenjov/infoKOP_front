@@ -39,7 +39,7 @@ export function useDogadjajReservation(filters: { kategorija: string; season: Se
     setSuccess(false)
     
     try {
-      const data = await apiFetch('/dogadjaji/reservations/create/', { 
+      const data = await apiFetch('api/dogadjaji/reservations/create/', { 
         method: 'POST', 
         body: JSON.stringify(payload) 
       })

@@ -50,7 +50,7 @@ export default function Dogadjaji({ activeSeason }: Props) {
     setReserving(dogadjaj.id);
     try {
       await apiReq.post('/rezervacije/reservations/', {
-      company: dogadjaj.company,  // ← just use it directly, it's already the ID
+      company: dogadjaj.company, 
       service_name: dogadjaj.naziv,
       service_type: 'dogadjaj',
       date_from: dogadjaj.datum_pocetka,

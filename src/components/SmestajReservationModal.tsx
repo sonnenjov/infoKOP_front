@@ -74,7 +74,7 @@ export default function SmestajReservationModal({
         if (!isLoggedIn()) {
             navigate('/account/login', { 
                 state: { 
-                    from: '/smestaj',
+                    from: 'api/smestaj',
                     returnUrl: '/profile',
                     reservationData: { 
                         smestajId: smestaj.id,
