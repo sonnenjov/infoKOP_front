@@ -62,7 +62,6 @@ export default function ReporterCategories() {
         </div>
       </div>
 
-      {/* THEMES */}
       <div className="rk-section">
         <h2 className="rk-section__title">Content Architecture</h2>
         <p className="rk-section__sub">Manage resort news classifications and visibility settings.</p>

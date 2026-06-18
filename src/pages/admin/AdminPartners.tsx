@@ -468,28 +468,7 @@ export default function AdminPartners() {
           </div>
         </div>
 
-        {/* <div style={{gridArea:"invitation"}} className="invitation boxpartners">
-          <span className="material-symbols-outlined">mail</span>
-          <h1>Invite new partners</h1>
-          <p>Grow the Alpine ecosystem by inviting local businesses directly to the portal.</p>
-          <form onSubmit={(e) => {
-            e.preventDefault()
-          }}>
-            <label htmlFor="mail">
-              <input 
-                placeholder="partner@email.com"
-                type="email" 
-                name="mail" 
-                id="mail"
-                required
-              />
-            </label>
-            <button type="submit">
-              Send Invite
-            </button>
-          </form>
-        </div> */}
-
+    
         <div style={{gridArea:"heatmap"}} className="heatmap boxpartners">
           <h1>Performance Heatmap</h1>
           <p>Real-time engagement tracking across all active partner categories.</p>

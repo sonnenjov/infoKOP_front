@@ -75,7 +75,6 @@ function ListingCard({ listing, selected, onToggle }: {
       border: `2px solid ${selected ? "#76b817" : "transparent"}`,
       transition: "border 0.15s",
     }}>
-      {/* Thumbnail */}
       <div style={{ background: "#2a2a2a", height: 120, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "3em", position: "relative" }}>
         {listing.img}
         {listing.flag && (
@@ -85,7 +84,6 @@ function ListingCard({ listing, selected, onToggle }: {
         )}
       </div>
 
-      {/* Info */}
       <div style={{ padding: "0.8em" }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.3em" }}>
           <span style={{ fontWeight: 700, fontSize: "0.88em" }}>{listing.title}</span>
@@ -93,7 +91,6 @@ function ListingCard({ listing, selected, onToggle }: {
         </div>
         <p style={{ margin: "0 0 0.7em", color: "#666", fontSize: "0.75em" }}>{listing.owner}</p>
 
-        {/* Actions */}
         <div style={{ display: "flex", gap: "0.4em" }}>
           {(["Verify", "Flag", "Hide"] as const).map((action) => (
             <button key={action} onClick={(e) => e.stopPropagation()} style={{
@@ -163,7 +160,6 @@ function Pagination({ page, total, onChange }: { page: number; total: number; on
   );
 }
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function ModerationPage() {
   const [typeFilter,   setTypeFilter]   = useState("All Types");
@@ -172,7 +168,6 @@ export default function ModerationPage() {
   const [page,         setPage]         = useState(1);
   const [selected,     setSelected]     = useState<Set<number>>(new Set());
 
-  // TODO: replace with useFetch / useEffect + API call
   const listings = MOCK_LISTINGS;
   const logs     = MOCK_LOGS;
 
@@ -205,7 +200,6 @@ export default function ModerationPage() {
   return (
     <div style={{ background: "#121212", minHeight: "100vh", color: "white", fontFamily: "system-ui, sans-serif", padding: "1.5em" }}>
 
-      {/* Header */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1em", marginBottom: "1.5em" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.8em", flexWrap: "wrap" }}>
           <h1 style={{ margin: 0, fontSize: "1.4em", fontWeight: 700 }}>Content Moderation</h1>
@@ -215,26 +209,21 @@ export default function ModerationPage() {
         <SearchInput value={search} onChange={(v) => { setSearch(v); setPage(1); }} />
       </div>
 
-      {/* Layout */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 290px", gap: "1.2em", alignItems: "start" }}>
 
-        {/* Left — listings */}
         <div style={{ background: "#222222", borderRadius: 16, padding: "1.2em", display: "flex", flexDirection: "column", gap: "1em" }}>
 
-          {/* Filters */}
           <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5em" }}>
             <FilterGroup options={TYPE_FILTERS}   active={typeFilter}   onChange={(v) => setFilter(v, statusFilter)} pill />
             <FilterGroup options={STATUS_FILTERS} active={statusFilter} onChange={(v) => setFilter(typeFilter, v)} />
           </div>
 
-          {/* Cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1em" }}>
             {paginated.map((l) => (
               <ListingCard key={l.id} listing={l} selected={selected.has(l.id)} onToggle={() => toggleSelect(l.id)} />
             ))}
           </div>
 
-          {/* Pagination row */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <span style={{ color: "#555", fontSize: "0.78em" }}>
               {Math.min((page - 1) * PER_PAGE + 1, filtered.length)}–{Math.min(page * PER_PAGE, filtered.length)} of {filtered.length}
@@ -243,10 +232,8 @@ export default function ModerationPage() {
           </div>
         </div>
 
-        {/* Right — sidebar */}
         <div style={{ display: "flex", flexDirection: "column", gap: "1.2em" }}>
 
-          {/* Partner health */}
           <div style={{ background: "#222222", borderRadius: 16, padding: "1.2em" }}>
             <h3 style={{ margin: "0 0 1em", fontSize: "0.9em" }}>Partner Health</h3>
             {[
@@ -272,7 +259,6 @@ export default function ModerationPage() {
             </div>
           </div>
 
-          {/* Recent actions */}
           <div style={{ background: "#222222", borderRadius: 16, padding: "1.2em" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.9em" }}>
               <h3 style={{ margin: 0, fontSize: "0.9em" }}>Recent Actions</h3>
@@ -289,7 +275,6 @@ export default function ModerationPage() {
   );
 }
 
-// ─── Tiny helpers ─────────────────────────────────────────────────────────────
 
 function Badge({ label, bg, color, icon }: { label: string; bg: string; color: string; icon: string }) {
   return (

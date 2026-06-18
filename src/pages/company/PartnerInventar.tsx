@@ -220,7 +220,6 @@ export default function PartnerInventar() {
           </div>
         </div>
 
-        {/* LOGS */}
         <div className="inv_card inv_logs" style={{ gridArea: "logs" }}>
           <div className="inv_card_header">
             <span>Evidencija Inventara</span>
@@ -239,7 +238,6 @@ export default function PartnerInventar() {
           <button className="inv_link_btn">Prikaži Sve Evidencije</button>
         </div>
 
-        {/* STATUS BARS */}
         <div className="inv_card inv_statusbars" style={{ gridArea: "status" }}>
           <div className="inv_card_header">
             <span>Status Opreme za Iznajmljivanje</span>

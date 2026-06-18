@@ -139,7 +139,6 @@ export default function UserSkiPass() {
                         <span className="detail-value">{formatDate(activePass.valid_until)}</span>
                       </div>
                     </div>
-                    {/* Delete button */}
                     <button
                       className="delete-pass-btn"
                       onClick={handleDelete}
