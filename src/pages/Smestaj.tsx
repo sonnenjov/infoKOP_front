@@ -35,9 +35,7 @@ interface SmestajItem {
 }
 
 export default function Smestaj({ activeSeason }: Props) {
-  const [openMap, setOpenMap] = useState(false)
   const [destination, setDestination] = useState("")
-  const [showSuggestions, setShowSuggestions] = useState(false)
   const [checkIn, setCheckIn] = useState("")
   const [checkOut, setCheckOut] = useState("")
   const [adults, setAdults] = useState(2)

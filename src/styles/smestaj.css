@@ -1,5 +1,13 @@
 @import url('./root.css');
 
+/* Reset & Defaults */
+* {
+  box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+}
 
 .smestaj.summer,
 .smestaj.winter {
@@ -10,7 +18,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  padding: 0 ;
+  padding: 0;
 }
 
 .smestaj.summer {
@@ -268,7 +276,7 @@
 }
 
 /* ===================================================================
-   MAIN GRID
+   MAIN GRID - CRITICAL FIX
    =================================================================== */
 
 .grid_smestaj {
@@ -279,16 +287,22 @@
   grid-template-columns: 280px 1fr;
   gap: 24px;
   padding: 30px 24px 40px;
+  background: #0d0f0d;
+}
+
+.grid_smestaj > * {
+  min-width: 0; /* Prevent grid children from overflowing */
 }
 
 /* ===================================================================
-   SIDEBAR
+   SIDEBAR - CRITICAL FIX
    =================================================================== */
 
 .sidebar {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
 .sidebar-section {
@@ -296,6 +310,10 @@
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 14px;
   padding: 18px 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .sidebar-section-title {
@@ -306,6 +324,7 @@
   color: var(--weather-inactive-summer);
   margin: 0 0 10px 0;
   font-weight: 700;
+  display: block;
 }
 
 /* Date inputs in sidebar */
@@ -503,13 +522,15 @@
 }
 
 /* ===================================================================
-   MAIN CONTENT
+   MAIN CONTENT - CRITICAL FIX
    =================================================================== */
 
 .mainbar {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  min-width: 0;
 }
 
 /* Results header */
@@ -894,18 +915,30 @@
 @media (max-width: 1200px) {
   .grid_smestaj {
     grid-template-columns: 1fr;
-    max-width: 800px;
+    max-width: 100%;
     padding: 20px;
   }
   
   .sidebar {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 16px;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
+  .grid_smestaj {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .sidebar {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
   .search_bar {
     border-radius: 20px;
     padding: 12px;
@@ -930,20 +963,11 @@
   }
   
   .block_smestaj_inner h1 {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
-  
 
-   
-  .block_smestaj_inner h1 {
-    font-size: 0.6em;
-  }
-  .grid_smestaj {
-    padding: 12px;
-  }
-  
-  .sidebar {
-    grid-template-columns: 1fr;
+  .block_smestaj_inner p {
+    font-size: 0.9rem;
   }
   
   .card-image-wrapper {
@@ -966,12 +990,18 @@
 }
 
 @media (max-width: 480px) {
+  .grid_smestaj {
+    padding: 8px;
+  }
+
   .search_bar {
     padding: 8px;
+    border-radius: 16px;
   }
   
   .search_field {
     padding: 2px 0;
+    min-width: 80px;
   }
   
   .block_smestaj_inner h1 {
@@ -1006,5 +1036,15 @@
     width: 100%;
     text-align: center;
     margin: 0;
+  }
+
+  .sidebar-section {
+    padding: 12px 14px;
+  }
+
+  .date-inputs,
+  .checkbox-group,
+  .price-inputs {
+    gap: 8px;
   }
 }
