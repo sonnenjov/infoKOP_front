@@ -32,7 +32,7 @@ export function useSmestaji(filters: SmestajFilters) {
     if (filters.checkOut) params.set('check_out', filters.checkOut)
     if (filters.page)     params.set('page', String(filters.page))
 
-    apiFetch<PaginatedResponse<Smestaj>>(`api/smestaj/?${params}`)
+    apiFetch<PaginatedResponse<Smestaj>>(`/api/smestaj/?${params}`)
       .then(setData)
       .catch(e => setError(String(e)))
       .finally(() => setLoading(false))
