@@ -308,6 +308,43 @@
   font-weight: 700;
 }
 
+/* Date inputs in sidebar */
+.date-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.date-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.date-input label {
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.date-input input {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: white;
+  font-size: 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.date-input input:focus {
+  border-color: var(--weather-inactive-summer);
+}
+
 /* Map */
 .map-wrapper {
   position: relative;
@@ -951,5 +988,23 @@
   
   .card-title {
     font-size: 0.95rem;
+  }
+
+  /* Ensure pagination is visible on mobile */
+  .pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 0;
+  }
+
+  .pagination button {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+
+  .pagination span {
+    width: 100%;
+    text-align: center;
+    margin: 0;
   }
 }
