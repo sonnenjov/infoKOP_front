@@ -139,110 +139,14 @@ export default function Smestaj({ activeSeason }: Props) {
         <div className={`block_smestaj_inner ${activeSeason}`}>
           <h1>PRONAĐITE IDEALAN SMEŠTAJ</h1>
           <p>Najbolji hoteli i apartmani na Kopaoniku</p>
-          <div className={`search_bar ${activeSeason}`}>
-            <div className="search_field destinacija">
-              <label className="search_label">DESTINACIJA</label>
-              <input
-                type="text"
-                className="search_input"
-                placeholder="Kuda idete?"
-                value={destination}
-                onChange={e => { setDestination(e.target.value); setShowSuggestions(true) }}
-                onFocus={() => setShowSuggestions(true)}
-                onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
-              />
-              {showSuggestions && (
-                <div className="search_dropdown">
-                  {loadingSuggestions ? (
-                    <div className="search_dropdown_item loading">Učitavanje...</div>
-                  ) : suggestions.length > 0 ? (
-                    suggestions.map(s => (
-                      <div
-                        key={s}
-                        className="search_dropdown_item"
-                        onMouseDown={() => { setDestination(s); setShowSuggestions(false) }}
-                      >
-                        {s}
-                      </div>
-                    ))
-                  ) : destination.length >= 2 ? (
-                    <div className="search_dropdown_item">Nema rezultata</div>
-                  ) : null}
-                </div>
-              )}
-            </div>
-
-            <div className={`razmak ${activeSeason}`} />
-
-            <div className="search_field datumi">
-              <label className="search_label">DATUMI</label>
-              <div className="datumi_inputs">
-                <input
-                  type="date"
-                  className="search_input date_input"
-                  value={checkIn}
-                  onChange={e => { setCheckIn(e.target.value); setPage(1) }}
-                />
-                <span className="date_arrow">→</span>
-                <input
-                  type="date"
-                  className="search_input date_input"
-                  value={checkOut}
-                  onChange={e => { setCheckOut(e.target.value); setPage(1) }}
-                />
-              </div>
-            </div>
-
-            <div className={`razmak ${activeSeason}`} />
-
-            <div className="search_field gosti">
-              <label className="search_label">GOSTI</label>
-              <div className="gosti_display" onClick={() => setShowGuests(v => !v)}>
-                {adults} Odraslih, {children} Dece
-              </div>
-              {showGuests && (
-                <div className="search_dropdown gosti_dropdown">
-                  <div className="guest_row">
-                    <div>
-                      <p className="guest_label">Odrasli</p>
-                      <p className="guest_sub">13+ godina</p>
-                    </div>
-                    <div className="guest_counter">
-                      <button onClick={() => setAdults(a => Math.max(1, a - 1))}>−</button>
-                      <span>{adults}</span>
-                      <button onClick={() => setAdults(a => a + 1)}>+</button>
-                    </div>
-                  </div>
-                  <div className="guest_row">
-                    <div>
-                      <p className="guest_label">Deca</p>
-                      <p className="guest_sub">0–12 godina</p>
-                    </div>
-                    <div className="guest_counter">
-                      <button onClick={() => setChildren(c => Math.max(0, c - 1))}>−</button>
-                      <span>{children}</span>
-                      <button onClick={() => setChildren(c => c + 1)}>+</button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <button className={`search_btn ${activeSeason}`} onClick={() => setPage(1)}>
-              <span className="material-symbols-outlined">search</span>
-            </button>
-          </div>
+          
         </div>
         <div className="gradient" />
       </div>
 
       <div className={`grid_smestaj ${activeSeason}`}>
         <div className="sidebar">
-          <CompanyFilter 
-            activeSeason={activeSeason}
-            onCompanySelect={setSelectedCompany}
-            filterType="smestaj"
-          />
+        
 
        
 

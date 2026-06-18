@@ -8,7 +8,8 @@ import { JSX } from 'react'
 import './i18n'
 import {AuthProvider}  from './hooks/useAuth.tsx'
 import { AppDataProvider } from './hooks/useAppData.tsx'
-
+import "./styles/vesti.css"
+import "./styles/vest_single.css"
 export function App(): JSX.Element {
   return (
     <BrowserRouter>

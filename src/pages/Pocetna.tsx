@@ -124,14 +124,7 @@ const renderTextPreview = (htmlString: string) => {
       </div>
       </div>
 
-      <div className="smestaj">
-         <h5 className={activeSeason === 'summer' ? "podnaslov_summer" : "podnaslov_winter"}>GDE ODSESTI</h5>
-        <h1 className="naslov">PREPORUČENI SMEŠTAJ </h1>
-        <div className="smestaj_kont">
-           
-        </div>
-        </div>
-
+     
 
     </main>
   )
