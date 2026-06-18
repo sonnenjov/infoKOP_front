@@ -1,0 +1,16 @@
+@import './main.css';
+@import './nav.css';
+@import './vest_single.css';
+@import './vesti.css';
+@import './admin/admin_approvals.css';
+@import './admin/dashboard_admin.css';
+@import './admin/partners_admin.css';
+@import './admin/settings_admin.css';
+@import './admin/users_admin.css';
+@import './user/activities_user.css';
+@import './user/dashboard_user.css';
+@import './user/reservations_user.css';
+@import './user/settings_user.css';
+@import './user/skipass_user.css';
+@import './user/weather.css';
+@import './vesti.css';

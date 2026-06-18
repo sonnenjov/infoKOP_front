@@ -2,6 +2,7 @@
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
+import './styles/indexe.css'
 import App_Routes from './routes.tsx'
 import { Season, useSeason } from './hooks/useSeason.ts'
 import { JSX } from 'react'

@@ -123,7 +123,7 @@ export default function AccountLayout({ activeSeason }: Props) {
           
           <button className="sidebar-logout" onClick={handleLogout}>
             <span className="material-symbols-outlined" style={{ fontSize: "16px" }}>logout</span>
-            {t("logout")}
+
           </button>
         </div>
       </aside>
